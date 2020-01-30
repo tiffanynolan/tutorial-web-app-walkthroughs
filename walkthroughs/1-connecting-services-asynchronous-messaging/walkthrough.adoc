@@ -1,34 +1,20 @@
-:walkthrough: Integrating message-oriented middleware with a RESTful API using AMQ Online
+:walkthrough: Connecting services using asynchronous messaging
 :fuse-version: 7.4
 :fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
 :amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/
 
-[id='integrating-eventdriven-and-apidriven-applications']
+[id='1-connecting-services-asynchronous-messaging']
+
 = {walkthrough}
 
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
-This Solution Pattern demonstrates a fault tolerant integration pattern that integrates a message driven architecture with a RESTful API architecture.
+Learn how to create a simple integration with built-in monitoring, so you can enable fault tolerant communication between applications.
 
-Message-oriented middleware (MOM)::
-MOM allows you to implement an asynchronous, routable, and transformable message queue.
+=== Welcome to Cruddy’s
+In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
 
-API-centric architecture::
-Typically, a developer working on a back-end application implements a synchronous RESTful API to allow communication from other applications.
-
-You may identify business value, as part of an application modernization effort, by integrating a message queue with an API.
-This is not trivial, because of the conflicting underlying timing models. The data may require transformation to be usable.
-
-This Solution Pattern consists of the following components:
-
-* An Order Entry System, built with Node.js, that provides a RESTful API and a user interface to create order messages
-* An Order Management System RESTful API, built with Red Hat Fuse, for querying and creating orders in an underlying PostgreSQL database
-* An Order Management System user interface, built with Node.js, for visualising orders in the PostgreSQL database using the Fuse RESTful API
-
-
-To create this integration, use link:{enmasse-url}[AMQ Online, window="_blank", id="wt1a_GS_enmasse-url"] and API connectors in link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="wt1a_GS_fuse-url"].
-
-All of the applications and services used in this Solution Pattern are running on Red Hat OpenShift.
-
+* Order Entry System - Provides a RESTful API and a user interface to create order messages for the customer.
+* Order Management System - Uses a RESTful API that is built with Red Hat Fuse for querying and creating orders in an underlying PostgreSQL database.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
@@ -56,8 +42,6 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 ****
 
 
-// tag:task-creating-addresses.adoc[]
-
 [time=6]
 
 [id='creating-addresses_{context}']
@@ -66,12 +50,12 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 :sectnums:
 
 
-==  Creating an address in AMQ Online address space
+==  Routing messages
 :context: creating-connections
 
 // tag::creating-api-connector[]
 
-To route messages from the Order Entry System to the Order Management System, create an address in AMQ Online.
+First, you will need to create an address in AMQ Online, so you can route messages from the Order Entry System to the Order Management System.
 
 . Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
 . Select *Addresses* from the left hand menu.
@@ -92,10 +76,10 @@ work-queue-requests
 Creating an address may take some time.
 
 [type=verification]
-Is the newly created address displayed on the *Addresses* screen of the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console?
+Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the _Addresses_ screen?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
+Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
 // end::task-creating-addresses[]
 
@@ -149,7 +133,7 @@ CREATE TABLE received_orders (
 ----
 
 [type=verification]
-Is the `received_orders` table listed when you enter the `\d` command in the terminal for the PostgreSQL pod? 
+Is the `received_orders` table listed when you enter the `\d` command in the terminal for the PostgreSQL pod?
 
 [type=verificationFail]
 Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
@@ -175,7 +159,7 @@ To create a connector for the Fuse RESTful API, register the OpenAPI definition 
 
 . Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console.
 +
-NOTE: You are not logging into the shared Fuse Online instance, available from the link:/[All services tab]. 
+NOTE: You are not logging into the shared Fuse Online instance, available from the link:/[All services tab].
 Starting this Solution Pattern provisioned an instance of Fuse Online which is not shared with other cluster users.
 
 . Select *Customizations > API Client Connectors* from the left hand menu.
