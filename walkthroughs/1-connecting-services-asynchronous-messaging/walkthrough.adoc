@@ -55,7 +55,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
 // tag::creating-api-connector[]
 
-First, you will need to create an address in AMQ Online, so you can route messages from the Order Entry System to the Order Management System.
+To route messages from the Order Entry System to the Order Management System, you will need to create an address in Red Hat AMQ Online. AMQ Online is ...
 
 . Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
 . Select *Addresses* from the left hand menu.
@@ -76,7 +76,7 @@ work-queue-requests
 Creating an address may take some time.
 
 [type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the _Addresses_ screen?
+Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the Addresses screen?
 
 [type=verificationFail]
 Verify that you followed all the steps. If you continue to have issues, contact your administrator.
