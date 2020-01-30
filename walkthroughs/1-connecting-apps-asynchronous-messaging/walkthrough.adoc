@@ -1,9 +1,10 @@
-:walkthrough: Connecting services using asynchronous messaging
+:walkthrough: Connecting applications using asynchronous messaging
 :fuse-version: 7.4
 :fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
 :amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/
+:standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
-[id='1-connecting-services-asynchronous-messaging']
+[id='1-connecting-apps-asynchronous-messaging']
 
 = {walkthrough}
 
@@ -28,14 +29,14 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 ****
 
 [type=walkthroughResource,serviceName=fuse]
-.Fuse Online
+.Red Hat Fuse Online
 ****
 * link:{fuse-url}[Console, window="_blank", id="resources-fuse-url"]
 * link:{fuse-documentation-url}[Fuse Documentation, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=amq-online-standard]
-.AMQ Online
+.Red Hat AMQ Online
 ****
 * link:{enmasse-url}[Console, window="_blank", , id="resources-enmasse-url"]
 * link:{amq-documentation-url}[AMQ Documentation, window="_blank"]
@@ -50,7 +51,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 :sectnums:
 
 
-==  Routing messages
+==  Creating an address
 :context: creating-connections
 
 // tag::creating-api-connector[]
@@ -60,7 +61,7 @@ To route messages from the Order Entry System to the Order Management System, yo
 . Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
 . Select *Addresses* from the left hand menu.
 
-. Create a *requests* address:
+. Create a requests address:
 .. Select the *Create* button to start the *Create new address* wizard.
 .. Enter the following as the name:
 +
@@ -76,10 +77,10 @@ work-queue-requests
 Creating an address may take some time.
 
 [type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the Addresses screen?
+Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the _Addresses_ screen?
 
 [type=verificationFail]
-Verify that you followed all the steps. If you continue to have issues, contact your administrator.
+{standard-fail-text}
 
 // end::task-creating-addresses[]
 
@@ -92,12 +93,12 @@ Verify that you followed all the steps. If you continue to have issues, contact 
 ****
 
 [time=5]
-==  Creating a table in PostgreSQL
+==  Creating a table to store the message data
 :context: creating-a-table
 
 // tag::task-table-setup[]
 
-Create a table to store orders.
+To create a table for storing the orders, you will use PostgreSQL.
 
 . Log into link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Namespace, window="_blank"] for this walkthrough.
 . Select *Applications > Pods* from the left hand menu.
@@ -136,7 +137,7 @@ CREATE TABLE received_orders (
 Is the `received_orders` table listed when you enter the `\d` command in the terminal for the PostgreSQL pod?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 // end::task-table-setup[]
 
@@ -195,7 +196,7 @@ Order System REST API Connector
 Is the new connector *Order System REST API Connector* displayed on the *Customizations > API Client Connectors* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-2"] console?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 // end::creating-api-connector[]
 
@@ -241,7 +242,7 @@ Order System REST API Connection
 Is the new connection displayed on the *Connections* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-4"] console?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 
 // end::creating-http-connection[]
@@ -305,7 +306,7 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 
 // end::creating-amqp-connection-in-fuse[]
@@ -456,7 +457,7 @@ Is your activity displayed?
 ****
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 
 // end::task-using-integration[]
