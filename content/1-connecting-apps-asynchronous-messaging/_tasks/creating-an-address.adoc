@@ -1,5 +1,4 @@
 [time=6]
-
 ==  Creating an address
 :context: creating-connections
 
