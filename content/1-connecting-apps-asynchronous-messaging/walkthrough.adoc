@@ -1,4 +1,8 @@
+:tasksdir: _tasks/
+
 :walkthrough: Connecting applications using asynchronous messaging
+
+
 :fuse-version: 7.4
 :fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
 :amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/
@@ -11,7 +15,7 @@
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to create a simple integration with built-in monitoring, so you can enable fault tolerant communication between applications.
 
-=== Welcome to Cruddy’s
+== Welcome to Cruddy’s
 In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
 
 * Order Entry System - Provides a RESTful API and a user interface to create order messages for the customer.
@@ -50,49 +54,9 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
 :sectnums:
 
+//include task 1
+include::{tasksdir}creating-an-address.adoc[]
 
-==  Creating an address
-:context: creating-connections
-
-// tag::creating-api-connector[]
-
-To route messages from the Order Entry System to the Order Management System, you will need to create an address in Red Hat AMQ Online. AMQ Online is ...
-
-. Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
-. Select *Addresses* from the left hand menu.
-
-. Create a requests address:
-.. Select the *Create* button to start the *Create new address* wizard.
-.. Enter the following as the name:
-+
-[subs="attributes+"]
-----
-work-queue-requests
-----
-.. Select *queue* as the type and click *Next*.
-.. Select *Small Queue* as the address plan and click *Next*.
-.. Select *Create* to complete the wizard.
-
-. Monitor the AMQ Online console until a green check mark is displayed beside the new address.
-Creating an address may take some time.
-
-[type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the _Addresses_ screen?
-
-[type=verificationFail]
-{standard-fail-text}
-
-// end::task-creating-addresses[]
-
-
-
-[type=taskResource]
-.Task Resources
-****
-* link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
-****
-
-[time=5]
 ==  Creating a table to store the message data
 :context: creating-a-table
 
