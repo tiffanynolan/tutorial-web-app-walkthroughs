@@ -1,16 +1,18 @@
-:tasksdir: _tasks/
-
-:walkthrough: Connecting applications using asynchronous messaging
-
-
+// update these for each release
 :fuse-version: 7.4
-:fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
-:amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/
+:amq-version: 7.4
+
+//static
+:tasksdir: _tasks/
+:solution-pattern-title: Connecting applications using asynchronous messaging
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
+:fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
+:amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/
+
 
 [id='1-connecting-apps-asynchronous-messaging']
 
-= {walkthrough}
+= {solution-pattern-title}
 
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to create a simple integration with built-in monitoring, so you can enable fault tolerant communication between applications.
@@ -18,7 +20,7 @@ Learn how to create a simple integration with built-in monitoring, so you can en
 == Welcome to Cruddy’s
 In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
 
-* Order Entry System - Provides a RESTful API and a user interface to create order messages for the customer.
+* Order Entry System - Provides a RESTful API and a user interface to create order messages for customers.
 * Order Management System - Uses a RESTful API that is built with Red Hat Fuse for querying and creating orders in an underlying PostgreSQL database.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
@@ -52,57 +54,10 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 include::{tasksdir}creating-an-address.adoc[]
 
 //Task 2
+include::{tasksdir}creating-a-table.adoc[]
 
 
 
-[time=5]
-==  Creating a table to store the message data
-:context: creating-a-table
-
-// tag::task-table-setup[]
-
-To create a table for storing the orders, you will use PostgreSQL.
-
-. Log into link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Namespace, window="_blank"] for this walkthrough.
-. Select *Applications > Pods* from the left hand menu.
-. Click the Pod that has the name *rhmi-lab-orders-db* followed by an ID, for example *rhmi-lab-orders-db-1-cfqh2*.
-. Select the *Terminal* tab on the Pod details screen.
-. Log in to the *orders* database using the command:
-+
-[subs="attributes+"]
-----
-psql -U {user-username} -W -d orders
-----
-. Enter the following when prompted:
-+
-[subs="attributes+"]
-----
-password
-----
-+
-For security reasons, the password is not shown in the terminal.
-Paste the password then press the *Enter* key.
-
-. Paste the following as SQL to create the `received_orders` table:
-+
-[subs="attributes+"]
-----
-CREATE TABLE received_orders (
-  id serial PRIMARY KEY,
-  product text NOT NULL,
-  quantity int NOT NULL,
-  message_id text NOT NULL,
-  datetime timestamp NOT NULL
-);
-----
-
-[type=verification]
-Is the `received_orders` table listed when you enter the `\d` command in the terminal for the PostgreSQL pod?
-
-[type=verificationFail]
-{standard-fail-text}
-
-// end::task-table-setup[]
 
 
 [time=5]
