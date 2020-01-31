@@ -46,17 +46,16 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 * link:{amq-documentation-url}[AMQ Documentation, window="_blank"]
 ****
 
-
-[time=6]
-
-[id='creating-addresses_{context}']
-
-
 :sectnums:
 
-//include task 1
+//Task 1
 include::{tasksdir}creating-an-address.adoc[]
 
+//Task 2
+
+
+
+[time=5]
 ==  Creating a table to store the message data
 :context: creating-a-table
 

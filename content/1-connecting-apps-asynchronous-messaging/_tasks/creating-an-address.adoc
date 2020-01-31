@@ -1,3 +1,5 @@
+[time=6]
+
 ==  Creating an address
 :context: creating-connections
 
@@ -32,5 +34,3 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 ****
 * link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
 ****
-
-[time=5]
