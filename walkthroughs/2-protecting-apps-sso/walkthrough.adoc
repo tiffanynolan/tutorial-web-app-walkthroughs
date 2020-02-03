@@ -24,7 +24,7 @@ Learn how to setup Customer Application SSO to protect end-user applications by 
 NOTE: You must complete the _{sp1-title}_ Solution Pattern before starting this one.
 
 //If I make this a title, it breaks the layout.
-=== Welcome back to Cruddy’s Car Parts!
+*Welcome back to Cruddy’s Car Parts!*
 In this Solution Pattern, you will continue to use the {create-messages-app} and the {retrieve-messages-app} applications from the _{sp1-title}_ Solution Pattern. Now, you will protect them from unauthorised access by creating and enabling a single sign-on service.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
