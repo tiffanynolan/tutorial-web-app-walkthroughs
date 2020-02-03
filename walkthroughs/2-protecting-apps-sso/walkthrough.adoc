@@ -9,7 +9,7 @@
 :sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
 :sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
 :rhmi-sso-name: Managed Integration SSO instance
-:customer-sso-name: Customer Application SSO instance
+:customer-sso-name: Customer Application SSO
 :sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
 :client-name: {user-username}-order-entry-system
 :shared-realm-username: walkthroughs
@@ -38,7 +38,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 ****
 
 [type=walkthroughResource,serviceName=3scale]
-.End user SSO instance
+.{customer-sso-name}
 ****
 * link:{sso-realm-url}[Shared SSO Realm, window="_blank"]
 * link:https://access.redhat.com/products/red-hat-single-sign-on/[Red Hat Single Sign-On Overview, window="_blank"]
@@ -46,8 +46,8 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
 :sectnums:
 
-[time=15]
-== Creating a client and user in SSO
+[time=7]
+== Creating a client
 
 SSO uses *Realms* to manage *Clients*, *Roles*, *Users* and *Groups*. A
 user belongs to and logs into a realm. Realms are isolated from one another and
@@ -55,8 +55,6 @@ can only manage and authenticate the users that they control.
 
 NOTE: The `walkthroughs` realm used in this Solution Pattern is shared with all users on the cluster. Do not use this realm for production applications.
 
-
-=== Creating a Client
 
 Securing an application using SSO requires a *Client* to be created in
 a *Realm*. The *Client* represents the application being secured and contains
@@ -69,7 +67,7 @@ important details regarding the security applied to the application.
 . Click the *Create* button at the top of the list of clients to display the *Add Client* screen:
 .. Enter `{client-name}` in the *Client ID* field.
 .. Verify *Client Protocol* is set to `openid-connect`.
-.. Paste the URL of the *Order Entry System UI* from the *Integrating message-oriented middleware with a RESTful API using AMQ Online* Solution Pattern in the *Root URL* field. This should look similar to `https://order-entry-ui-{user-username}-<NAMESPACE>.{openshift-app-host}`
+.. Paste the URL of the *{create-messages-app} UI* from the *Integrating message-oriented middleware with a RESTful API using AMQ Online* Solution Pattern in the *Root URL* field. This should look similar to `https://order-entry-ui-{user-username}-<NAMESPACE>.{openshift-app-host}`
 .. Click *Save*.
 . The *Settings* screen for the `{client-name}` client should be displayed.
 . Verify that the *Access Type* field is set to `public`. This means the client is a frontend application that needs to log in using a web browser.
@@ -79,9 +77,10 @@ Select *Clients* in the side menu.
 Is the `{client-name}` client listed and is the *Enabled* field set to `True`?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above. In the *Settings* tab on the *Client* page, verify that the *Enabled* toggle is set to *ON*. If you are still having issues, contact your administrator.
+In the *Settings* tab on the *Client* page, make sure that the *Enabled* toggle is set to *ON*. {standard-fail-text}
 
-=== Creating a User
+[time=7]
+== Creating a User
 
 Red Hat Single Sign-On provides identity brokering functionality, which facilitates login using a shared identity. For example, it is possible
 to create an *Identity Provider* in a *Realm* in SSO to enable login
@@ -113,10 +112,10 @@ NOTE: If we left *Temporary* in the *ON* position the user would be forced to cr
 Select the *Users* item in the side menu. Click the *View all users* button. Is the `customer` user listed?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 [time=15]
-== Enabling SSO in the Order Entry System
+== Enabling SSO in the {create-messages-app}
 
 === Obtaining the SSO Configuration
 
@@ -132,7 +131,7 @@ Various platforms are supported with *Client Adapters*:
 
 {blank}
 
-The *Order Entry System* is run from a Node.js server, so the Node.js
+The *{create-messages-app}* is run from a Node.js server, so the Node.js
 `keycloak-connect` adapter is included in the code. The following steps will
 demonstrate how to include a configuration and enable the adapter.
 
@@ -170,7 +169,7 @@ demonstrate how to include a configuration and enable the adapter.
 . Scroll down and click *Save*.
 . Select *Overview* on the left and find the *rhmi-lab-nodejs-order-frontend* in the list.
 . If a deployment is still in progress, wait for it to finish.
-. Open the URL listed beside the *rhmi-lab-nodejs-order-frontend* in either a private browser session, or a different browser to view the *Order Entry System* UI.
+. Open the URL listed beside the *rhmi-lab-nodejs-order-frontend* in either a private browser session, or a different browser to view the *{create-messages-app}* UI.
 +
 NOTE: Use a private session or different browser to avoid conflict with old sessions.
 
@@ -180,11 +179,10 @@ NOTE: Use a private session or different browser to avoid conflict with old sess
 . Click the *Log In* button.
 
 [type=verification]
-The login should be successful. Is the *Order Entry System* web application displayed?
+The login should be successful. Is the *{create-messages-app}* web application displayed?
 
 [type=verificationFail]
-If a login page is not presented try opening the *Order Entry System* in a private browsing session or different browser.
-Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
+If a login page is not presented try opening the *{create-messages-app}* in a private browsing session or different browser. {standard-fail-text}
 
 [type=taskResource]
 .Task Resources
