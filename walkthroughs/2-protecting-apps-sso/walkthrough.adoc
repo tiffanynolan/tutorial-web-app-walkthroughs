@@ -1,25 +1,30 @@
-:sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
-:sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.3/html/securing_applications_and_services_guide/index
+// update these for each release
+:sso-version: 7.3
 
+//static
+:title: Protecting applications using single sign-on
+:sp1-title: Connecting applications using asynchronous messaging
+:create-messages-app: Order Entry System
+:retrieve-messages-app: Order Management System
+:sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
+:sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
 :rhmi-sso-name: Managed Integration SSO instance
 :customer-sso-name: Customer Application SSO instance
 :sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
 :client-name: {user-username}-order-entry-system
 :shared-realm-username: walkthroughs
+:standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
-= Protecting Applications using Red Hat Single Sign-On (SSO)
+[#2-protecting-apps-sso]
+= {title}
 
-This Solution Pattern demonstrates how to use the end user SSO instance to protect web applications using standards such as SAML 2.0, OpenID Connect and OAuth 2.0.
+// word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
+Learn how to setup Customer Application SSO to protect end-user applications by using standards such as OpenID Connect, OAuth 2.0, and SAML 2.0.
 
-For more information about the various SSO instances in a Managed Integration cluster, see the link:https://access.redhat.com/documentation/en-us/red_hat_managed_integration/1/html-single/getting_started/index#sso[Managed Integration documentation].
+NOTE: You must complete the _{sp1-title}_ Solution Pattern before starting this one.
 
-NOTE: You must complete the *Integrating message-oriented middleware with a RESTful API using AMQ Online* Solution Pattern before starting this Solution Pattern.
-
-
-This Solution Pattern shows you how to use the *{customer-sso-name}* to enable
-authentication and authorisation for the *Order Entry System* and the *Order
-Management System* from the *Integrating message-oriented middleware with a
-RESTful API using AMQ Online* Solution Pattern.
+== Welcome back to Cruddy’s Car Parts
+In this Solution Pattern, you will continue to use the {create-messages-app} and the {retrieve-messages-app} applications from the _{sp1-title}_ Solution Pattern. You now need to protect them from unauthorised access by creating and enabling a single sign-on service.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
@@ -69,7 +74,7 @@ important details regarding the security applied to the application.
 . Verify that the *Access Type* field is set to `public`. This means the client is a frontend application that needs to log in using a web browser.
 
 [type=verification]
-Select *Clients* in the side menu. 
+Select *Clients* in the side menu.
 Is the `{client-name}` client listed and is the *Enabled* field set to `True`?
 
 [type=verificationFail]
@@ -132,7 +137,7 @@ demonstrate how to include a configuration and enable the adapter.
 
 
 . Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
-. Enter the username `{shared-realm-username}` and password `password` if prompted. 
+. Enter the username `{shared-realm-username}` and password `password` if prompted.
 . Select *Clients* from the side menu.
 . Click the `{client-name}` client that was created earlier.
 . Choose the *Installation* tab.
@@ -160,7 +165,7 @@ demonstrate how to include a configuration and enable the adapter.
 .. Click *Add Value from Config Map or Secret*
 .. Enter `KEYCLOAK_CONFIG` in the *Name* column.
 .. Choose `order-entry-keycloak-config` from the *Select a resource* dropdown.
-.. Choose *KEYCLOAK_CONFIG* from the *Select key* menu. 
+.. Choose *KEYCLOAK_CONFIG* from the *Select key* menu.
 . Scroll down and click *Save*.
 . Select *Overview* on the left and find the *rhmi-lab-nodejs-order-frontend* in the list.
 . If a deployment is still in progress, wait for it to finish.
