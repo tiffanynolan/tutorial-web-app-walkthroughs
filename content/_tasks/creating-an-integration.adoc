@@ -1,5 +1,5 @@
 [time=5]
-[id='creating-an-integration']
+[#creating-an-integration]
 == Creating an integration
 :context: creating-an-integration
 

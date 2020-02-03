@@ -1,4 +1,5 @@
 [time=5]
+[#creating-connections]
 == Creating connections
 :context: creating-connections
 
@@ -61,7 +62,7 @@ Is the new connector *Order System REST API Connector* displayed on the *Customi
 [.integr8ly-docs-header]
 === Creating HTTP connection to CRUD App
 
-To enable Fuse Online to send messages from the queue to the Order Management System, create a connection in Red Hat Fuse Online using the API connector you created earlier.
+To enable Fuse Online to send messages from the queue to the {retrieve-messages-app}, create a connection in Red Hat Fuse Online using the API connector you created earlier.
 
 
 . Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-3"] console.
@@ -105,7 +106,7 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 [.integr8ly-docs-header]
 === Creating an AMQP connection in Red Hat Fuse Online
 
-To allow Fuse Online to consume messages placed on the queue by the Order Entry System, create a connection in Red Hat Fuse Online:
+To allow Fuse Online to consume messages placed on the queue by the {create-messages-app}, create a connection in Red Hat Fuse Online:
 
 
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/

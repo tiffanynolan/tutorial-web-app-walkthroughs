@@ -1,10 +1,18 @@
 [time=6]
+[#creating-an-address]
 ==  Creating an address
 :context: creating-connections
 
-To route messages from the Order Entry System to the Order Management System, you will need to create an address in Red Hat AMQ Online. AMQ Online is ...
+To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
+
+****
+.What is AMQ Online?
+AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
+****
 
 . Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
++
+NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
 . Select *Addresses* from the left hand menu.
 
 . Create a requests address:
@@ -31,5 +39,5 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 [type=taskResource]
 .Task Resources
 ****
-* link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.4/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
+* link:https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
 ****

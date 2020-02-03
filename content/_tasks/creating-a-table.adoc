@@ -1,8 +1,7 @@
 [time=5]
+[#creating-a-table]
 ==  Creating a table
 :context: creating-a-table
-
-// tag::task-table-setup[]
 
 To create a table for storing the orders, you will use PostgreSQL.
 
