@@ -171,7 +171,7 @@ demonstrate how to include a configuration and enable the adapter.
 . If a deployment is still in progress, wait for it to finish.
 . Open the URL listed beside the *rhmi-lab-nodejs-order-frontend* in either a private browser session, or a different browser to view the *{create-messages-app}* UI.
 +
-NOTE: Use a private session or different browser to avoid conflict with old sessions.
+NOTE: Use a private session or different browser to avoid conflict with your old sessions.
 
 . A login screen with the title *walkthroughs Realm* is displayed.
 . Enter `customer` in the *Username or email*.
