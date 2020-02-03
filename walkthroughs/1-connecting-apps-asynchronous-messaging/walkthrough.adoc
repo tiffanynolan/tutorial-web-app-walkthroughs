@@ -18,7 +18,8 @@
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to create a simple integration with built-in monitoring, so you can enable fault tolerant communication between applications.
 
-== Welcome to Cruddy’s
+*Welcome to Cruddy’s Car Parts*
+
 In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
 
 * {create-messages-app} - Provides a RESTful API and a user interface to create order messages for customers.
