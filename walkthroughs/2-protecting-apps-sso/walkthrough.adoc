@@ -81,7 +81,7 @@ Is the `{client-name}` client listed and is the *Enabled* field set to `True`?
 In the *Settings* tab on the *Client* page, make sure that the *Enabled* toggle is set to *ON*. {standard-fail-text}
 
 [time=7]
-== Creating a User
+== Creating a user
 
 Red Hat Single Sign-On provides identity brokering functionality, which facilitates login using a shared identity. For example, it is possible
 to create an *Identity Provider* in a *Realm* in SSO to enable login
@@ -118,7 +118,7 @@ Select the *Users* item in the side menu. Click the *View all users* button. Is 
 [time=15]
 == Enabling SSO in the {create-messages-app}
 
-=== Obtaining the SSO Configuration
+=== Obtaining the SSO configuration
 
 To secure an application with SSO a *Client Adapter* is required.
 Various platforms are supported with *Client Adapters*:
