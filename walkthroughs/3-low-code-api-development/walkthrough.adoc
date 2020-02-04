@@ -1,15 +1,13 @@
 // update the component versions for each release
 :fuse-version: 7.4
-:3scale-version: 2.6
 
 // URLs
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
-:3scale-url: https://eval.apps.city.openshiftworkshop.com/
 :route: https://wt3-{user-username}-3scale.{openshift-app-host}
 
 //attributes
 :title: Low-code API development and SaaS integration
-:3scale-name: Red Hat 3scale API Management Platform
+:standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
 [#3-low-code-api-development]
 = {title}
@@ -30,24 +28,16 @@ You then use the resulting Open API definition to generate the code for your API
 Following a design first approach to API development is self-documenting, and provides a clear API definition for partners and end-users of your API.
 It also allows you to identify important design decisions prior to coding and deployment.
 
-[type=walkthroughResource,serviceName=fuse]
-.Fuse Online
-****
-* link:{fuse-url}[Console, window="_blank"]
-****
-
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
 * link:{openshift-host}/console[Console, window="_blank"]
 ****
 
-[type=walkthroughResource,serviceName=3scale]
-.3Scale
+[type=walkthroughResource,serviceName=fuse]
+.Red Hat Fuse Online
 ****
-* link:{api-management-url}[Console, window="_blank"]
-* link:https://developers.redhat.com/products/3scale/overview/[3Scale Overview, window="_blank"]
-* link:https://www.3scale.net[3Scale Website, window="_blank"]
+* link:{fuse-url}[Console, window="_blank"]
 ****
 
 :sectnums:
@@ -156,12 +146,8 @@ Greeting Slack Target
 [type=verification]
 Is a *Greeting Slack Target* entry listed in the Fuse Online *Connections* screen?
 
-
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
-
-[type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 [time=20]
 == Creating an API Integration in Fuse Online
@@ -219,7 +205,7 @@ Is `</> Name` listed under the *Data Types* on the *Provide API Definition* scre
 
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}
 
 
 === Creating a POST Resource Path
@@ -295,4 +281,4 @@ my greeting api
 Is a *Greet with name* entry listed in the *Operations* screen?
 
 [type=verificationFail]
-Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+{standard-fail-text}

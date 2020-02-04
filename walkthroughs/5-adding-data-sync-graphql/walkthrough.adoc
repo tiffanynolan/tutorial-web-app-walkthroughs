@@ -13,6 +13,7 @@
 :data-sync-showcase-app: Data Sync showcase application
 :customer-sso-name: Customer Application SSO instance
 :shared-realm-username: walkthroughs
+:standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
 [#5-adding-data-sync-graphql]
 = {title}
@@ -32,14 +33,13 @@ image::images/arch.png[architecture, role="integr8ly-img-responsive"]
 
 
 [type=walkthroughResource, serviceName=openshift]
-.Project in OpenShift
+.Red Hat OpenShift
 ****
 * link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Project, window="_blank"]
 ****
 
-
 [type=walkthroughResource]
-.Data Sync Documentation
+.Data Sync
 ****
 * link:{data-sync-documentation-url}[Getting Started with {data-sync-name}, window="_blank"]
 ****

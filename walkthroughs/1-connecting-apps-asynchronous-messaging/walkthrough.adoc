@@ -28,7 +28,6 @@ In this Solution Pattern, you will be using two applications from a fictitious c
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
-
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
