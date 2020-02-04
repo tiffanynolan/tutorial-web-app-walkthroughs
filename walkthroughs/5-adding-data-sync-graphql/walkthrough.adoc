@@ -1,18 +1,28 @@
-:showcase-app-link: https://github.com/aerogear/ionic-showcase
+// update the component versions for each release
+:rhmi-version: 1
+
+// URLs
+:showcase-app-url: https://github.com/aerogear/ionic-showcase
+:sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
+:data-sync-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_managed_integration/{rhmi-version}/html-single/developing_a_data_sync_app/index
+
+//attributes
+:title: Adding Data Sync to your application with GraphQL
 :integreatly-name: Managed Integration
 :data-sync-name: Data Sync
 :data-sync-showcase-app: Data Sync showcase application
 :customer-sso-name: Customer Application SSO instance
-:sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
 :shared-realm-username: walkthroughs
 
-= Adding Data Sync to your application with GraphQL
+[#5-adding-data-sync-graphql]
+= {title}
 
-Data Sync is a framework that helps developers build applications that can perform realtime data synchronization with GraphQL.
- 
+// word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
+Learn how to build applications that can perform realtime data synchronization with GraphQL.
+
 This solution pattern will show you how to:
 
-* Configure and run the link:{showcase-app-link}[{data-sync-showcase-app}] on OpenShift.
+* Configure and run the link:{showcase-app-url}[{data-sync-showcase-app}] on OpenShift.
 * Protect the application's frontend and backend using Red Hat SSO.
 * Explore all the capabilities provided by {data-sync-name}.
 
@@ -31,7 +41,7 @@ image::images/arch.png[architecture, role="integr8ly-img-responsive"]
 [type=walkthroughResource]
 .Data Sync Documentation
 ****
-* link:https://access.redhat.com/documentation/en-us/red_hat_managed_integration/1/html-single/developing_a_data_sync_app/index[Getting Started with {data-sync-name}, window="_blank"]
+* link:{data-sync-documentation-url}[Getting Started with {data-sync-name}, window="_blank"]
 ****
 
 :sectnums:
@@ -260,7 +270,7 @@ KEYCLOAK_CONFIG
 
 [type=verification]
 ****
-Has the deployment completed? 
+Has the deployment completed?
 Do you see SSO login screen when you navigate to the link:{route-ionic-showcase-server-host}[{data-sync-showcase-app}, window="_blank"]?
 ****
 
