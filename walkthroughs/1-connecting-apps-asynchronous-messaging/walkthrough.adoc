@@ -3,6 +3,7 @@
 :amq-version: 7.4
 
 // URLs
+:openshift-console-url: {openshift-host}/console
 :fuse-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_fuse/{fuse-version}/
 :amq-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/
 
@@ -31,7 +32,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-host}/console[Console, window="_blank"]
+* link:{openshift-console-url}[Console, window="_blank"]
 * link:https://help.openshift.com/[OpenShift Online Help Center, window="_blank"]
 * link:https://blog.openshift.com/[OpenShift Blog, window="_blank"]
 ****

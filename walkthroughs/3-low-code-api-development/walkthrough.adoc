@@ -2,6 +2,7 @@
 :fuse-version: 7.4
 
 // URLs
+:openshift-console-url: {openshift-host}/console
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
 :route: https://wt3-{user-username}-3scale.{openshift-app-host}
 
@@ -31,7 +32,7 @@ It also allows you to identify important design decisions prior to coding and de
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-host}/console[Console, window="_blank"]
+* link:{openshift-console-url}[Console, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=fuse]

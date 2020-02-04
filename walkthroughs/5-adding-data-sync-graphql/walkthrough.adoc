@@ -2,6 +2,7 @@
 :rhmi-version: 1
 
 // URLs
+:openshift-console-url: {openshift-host}/console
 :showcase-app-url: https://github.com/aerogear/ionic-showcase
 :sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
 :data-sync-documentation-url: https://access.redhat.com/documentation/en-us/red_hat_managed_integration/{rhmi-version}/html-single/developing_a_data_sync_app/index
@@ -35,7 +36,7 @@ image::images/arch.png[architecture, role="integr8ly-img-responsive"]
 [type=walkthroughResource, serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Project, window="_blank"]
+* link:{openshift-console-url}/k8s/cluster/projects/[OpenShift Projects, window="_blank"]
 ****
 
 [type=walkthroughResource]

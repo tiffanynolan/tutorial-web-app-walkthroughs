@@ -3,12 +3,13 @@
 :3scale-version: 2.6
 
 // URLs
+:openshift-console-url: {openshift-host}/console
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
 :3scale-url: https://eval.apps.city.openshiftworkshop.com/
 :route: https://wt3-{user-username}-3scale.{openshift-app-host}
 
 //attributes
-:title: Low-code API development and SaaS integration
+:title: Protecting APIs
 :3scale-name: Red Hat 3scale API Management Platform
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
@@ -34,7 +35,7 @@ It also allows you to identify important design decisions prior to coding and de
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-host}/console[Console, window="_blank"]
+* link:{openshift-console-url}[Console, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=fuse]

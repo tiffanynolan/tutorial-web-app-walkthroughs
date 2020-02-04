@@ -2,6 +2,7 @@
 :sso-version: 7.3
 
 // URLs
+:openshift-console-url: {openshift-host}/console
 :sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
 :sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
 :sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
@@ -35,7 +36,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-host}/console[Console, window="_blank"]
+* link:{openshift-console-url}[Console, window="_blank"]
 * link:https://help.openshift.com/[OpenShift Online Help Center, window="_blank"]
 * link:https://blog.openshift.com/[OpenShift Blog, window="_blank"]
 ****
@@ -149,7 +150,7 @@ demonstrate how to include a configuration and enable the adapter.
 
 === Creating a SSO Config Map Entry
 
-. Login to the link:{openshift-host}/console/[OpenShift Console, window="_blank"].
+. Login to the link:{openshift-console-url}[OpenShift Console, window="_blank"].
 . Select the project that contains *walkthroughs-1A-integrate-event-and-api-driven-apps* in the name.
 . Select *Resources > Config Maps*.
 . Click the *Create Config Map*  button.
@@ -160,7 +161,7 @@ demonstrate how to include a configuration and enable the adapter.
 
 === Applying the SSO Config Map
 
-. Log in to the link:{openshift-host}/console/[OpenShift Console, window="_blank"].
+. Log in to the link:{openshift-console-url}[OpenShift Console, window="_blank"].
 . Navigate to the *walkthroughs-1A-integrate-event-and-api-driven-apps* project.
 . Select *Applications > Deployments*.
 . Select the *rhmi-lab-nodejs-order-frontend* item from the *Deployments* list.
