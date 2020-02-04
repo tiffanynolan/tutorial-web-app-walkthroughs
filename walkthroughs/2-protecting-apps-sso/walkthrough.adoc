@@ -2,7 +2,7 @@
 :sso-version: 7.3
 
 // URLs
-:openshift-console-url: {openshift-host}/console
+:openshift-console-url: {openshift-host}
 :sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
 :sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
 :sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
