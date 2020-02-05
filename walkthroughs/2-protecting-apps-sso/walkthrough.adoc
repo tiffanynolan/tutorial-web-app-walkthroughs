@@ -1,4 +1,23 @@
-include::attributes.adoc[]
+// update the component versions for each release
+:sso-version: 7.3
+
+// URLs
+:openshift-console-url: {openshift-host}
+:sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
+:sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
+:sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
+
+//attributes
+:title: Protecting applications using single sign-on
+:sp1-title: Connecting applications using asynchronous messaging
+:create-messages-app: Order Entry System
+:retrieve-messages-app: Order Management System
+:rhmi-sso-name: Managed Integration SSO instance
+:customer-sso-name: Customer Application SSO
+:client-name: {user-username}-order-entry-system
+:shared-realm-username: walkthroughs
+:standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
+
 
 [#2-protecting-apps-sso]
 = {title}
