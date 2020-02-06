@@ -1,6 +1,6 @@
 [time=5]
 [#creating-a-table]
-==  Creating a table
+== Creating a table
 :context: creating-a-table
 
 To create a table for storing the orders, you will use PostgreSQL.
@@ -43,5 +43,3 @@ Is the `received_orders` table listed when you enter the `\d` command in the ter
 
 [type=verificationFail]
 {standard-fail-text}
-
-// end::task-table-setup[]
