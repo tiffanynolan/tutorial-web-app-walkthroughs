@@ -15,7 +15,7 @@
 :rhmi-sso-name: Managed Integration SSO instance
 :customer-sso-name: Customer Application SSO
 :client-name: {user-username}-order-entry-system
-:shared-realm-username: walkthroughs
+:shared-realm-username: developer
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
 //id syntax is used here for the custom IDs because that is how the Solution Explorer sorts these within groups
@@ -58,7 +58,7 @@ SSO uses *Realms* to manage *Clients*, *Roles*, *Users* and *Groups*. A
 user belongs to and logs into a realm. Realms are isolated from one another and
 can only manage and authenticate the users that they control.
 
-NOTE: The `walkthroughs` realm used in this Solution Pattern is shared with all users on the cluster. Do not use this realm for production applications.
+NOTE: The solution-patterns realm used in this Solution Pattern is shared with all users on the cluster. Do not use this realm for production applications.
 
 
 Securing an application using SSO requires a *Client* to be created in
@@ -66,7 +66,7 @@ a *Realm*. The *Client* represents the application being secured and contains
 important details regarding the security applied to the application.
 
 . Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
-. Enter the username `walkthroughs` and password `password` if prompted.
+. Enter the username `{shared-realm-username}` and password `password` if prompted.
 . Details for the `walkthroughs` realm are displayed upon login success.
 . Select *Clients* from the menu on the left.
 . Click the *Create* button at the top of the list of clients to display the *Add Client* screen:
