@@ -5,7 +5,7 @@
 :openshift-console-url: {openshift-host}
 :sso-realm-url: {user-sso-url}/auth/admin/{user-username}/console/index.html
 :sso-adapter-docs-url: https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/{sso-version}/html/securing_applications_and_services_guide/index
-:sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
+:sso-realm-url: {user-sso-url}/auth/admin/solution-patterns/console/index.html
 
 //attributes
 :title: Protecting applications using single sign-on
@@ -18,7 +18,7 @@
 :shared-realm-username: walkthroughs
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
-
+//id syntax is used here for the custom IDs because that is how the Solution Explorer sorts these within groups
 [id='2-protecting-apps-sso']
 = {title}
 
