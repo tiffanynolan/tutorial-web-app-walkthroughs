@@ -54,16 +54,19 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 [time=7]
 == Creating a client
 
-SSO uses *Realms* to manage *Clients*, *Roles*, *Users* and *Groups*. A
-user belongs to and logs into a realm. Realms are isolated from one another and
-can only manage and authenticate the users that they control.
+To secure your application with single sign-on, you must create a client in a realm.
+The client represents the application being secured and contains important details regarding the security applied to the application.
+The realms are what users belong to so they can log in.
+Realms are isolated from one another and can only manage and authenticate the users that belong to them.
+You can use the Customer Application SSO to log in to a realm and manage your *Clients*, *Roles*, *Users* and *Groups*.
+
+****
+.What is Customer Application SSO?
+Customer Application SSO, included with Red Hat Managed Integration, helps you to define the identities of your end users.
+Red Hat manages this instance, however there are some users that have admin level privileges to configure this instance.
+****
 
 NOTE: The solution-patterns realm used in this Solution Pattern is shared with all users on the cluster. Do not use this realm for production applications.
-
-
-Securing an application using SSO requires a *Client* to be created in
-a *Realm*. The *Client* represents the application being secured and contains
-important details regarding the security applied to the application.
 
 . Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
 . Enter the username `{shared-realm-username}` and password `password` if prompted.
