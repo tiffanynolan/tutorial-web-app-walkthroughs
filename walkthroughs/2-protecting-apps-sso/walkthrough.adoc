@@ -15,6 +15,7 @@
 :rhmi-sso-name: Managed Integration SSO instance
 :customer-sso-name: Customer Application SSO
 :client-name: {user-username}-order-entry-system
+:realm-name: solution-patterns
 :shared-realm-username: developer
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
@@ -70,18 +71,18 @@ NOTE: The solution-patterns realm used in this Solution Pattern is shared with a
 
 . Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
 . Enter the username `{shared-realm-username}` and password `password` if prompted.
-. Details for the `walkthroughs` realm are displayed upon login success.
+. Details for the {realm-name} realm are displayed upon login success.
 . Select *Clients* from the menu on the left.
 . Click the *Create* button at the top of the list of clients to display the *Add Client* screen:
 .. Enter `{client-name}` in the *Client ID* field.
 .. Verify *Client Protocol* is set to `openid-connect`.
 .. Paste the URL of the *{create-messages-app} UI* from the *Integrating message-oriented middleware with a RESTful API using AMQ Online* Solution Pattern in the *Root URL* field. This should look similar to `https://order-entry-ui-{user-username}-<NAMESPACE>.{openshift-app-host}`
 .. Click *Save*.
-. The *Settings* screen for the `{client-name}` client should be displayed.
-. Verify that the *Access Type* field is set to `public`. This means the client is a frontend application that needs to log in using a web browser.
+. The *Settings* screen for the {client-name} client should be displayed.
+. Verify that the *Access Type* field is set to *public*. This means the client is a frontend application that needs to log in using a web browser.
 
 [type=verification]
-Select *Clients* in the side menu.
+Select *Clients* from the vertical navigation menu on the left side of the screen.
 Is the `{client-name}` client listed and is the *Enabled* field set to `True`?
 
 [type=verificationFail]
