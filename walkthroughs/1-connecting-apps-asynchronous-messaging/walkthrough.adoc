@@ -54,8 +54,51 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
 :sectnums:
 
-//Task 1
-//include::{tasksdir}creating-an-address.adoc[]
+[time=6]
+[id='creating-an-address']
+==  Creating an address
+:context: creating-connections
+
+To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
+
+****
+.What is AMQ Online?
+AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
+****
+
+. Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
++
+NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
+. Select *Addresses* from the left hand menu.
+
+. Create a requests address:
+.. Select the *Create* button to start the *Create new address* wizard.
+.. Enter the following as the name:
++
+[subs="attributes+"]
+----
+work-queue-requests
+----
+.. Select *queue* as the type and click *Next*.
+.. Select *Small Queue* as the address plan and click *Next*.
+.. Select *Create* to complete the wizard.
+
+. Monitor the AMQ Online console until a green check mark is displayed beside the new address.
+Creating an address may take some time.
+
+[type=verification]
+Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the *Addresses* screen?
+
+[type=verificationFail]
+{standard-fail-text}
+
+[type=taskResource]
+.Task Resources
+****
+* link:https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
+****
+
+
 [time=6]
 [id=creating-an-address]
 ==  Creating an address
@@ -101,57 +144,8 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 ****
 
 
-//Task 2
-//include::{tasksdir}creating-a-table.adoc[]
-[time=6]
-[id=creating-an-address]
-==  Creating an address
-:context: creating-connections
-
-To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
-
-****
-.What is AMQ Online?
-AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
-****
-
-. Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
-+
-NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
-. Select *Addresses* from the left hand menu.
-
-. Create a requests address:
-.. Select the *Create* button to start the *Create new address* wizard.
-.. Enter the following as the name:
-+
-[subs="attributes+"]
-----
-work-queue-requests
-----
-.. Select *queue* as the type and click *Next*.
-.. Select *Small Queue* as the address plan and click *Next*.
-.. Select *Create* to complete the wizard.
-
-. Monitor the AMQ Online console until a green check mark is displayed beside the new address.
-Creating an address may take some time.
-
-[type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the *Addresses* screen?
-
-[type=verificationFail]
-{standard-fail-text}
-
-[type=taskResource]
-.Task Resources
-****
-* link:https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
-****
-
-
-//Task 3
-//include::{tasksdir}creating-connections.adoc[]
 [time=5]
-[id=creating-connections]
+[id='creating-connections']
 == Creating connections
 :context: creating-connections
 
@@ -327,10 +321,8 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 ****
 
 
-//Task 4
-//include::{tasksdir}creating-an-integration.adoc[]
 [time=5]
-[id=creating-an-integration]
+[id='creating-an-integration']
 == Creating an integration
 :context: creating-an-integration
 
@@ -430,10 +422,8 @@ Is the integration displayed as *Running* on the *Integrations* screen of the li
 ****
 
 
-//Task 5
-//include::{tasksdir}using-the-integration.adoc[]
 [time=5]
-[id=using-the-integration]
+[id='using-the-integration']
 == Using the integration
 :context: using-the-application-integration
 
