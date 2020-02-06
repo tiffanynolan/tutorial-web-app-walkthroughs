@@ -67,10 +67,11 @@ Customer Application SSO, included with Red Hat Managed Integration, helps you t
 Red Hat manages this instance, however there are some users that have admin level privileges to configure this instance.
 ****
 
-NOTE: The solution-patterns realm used in this Solution Pattern is shared with all users on the cluster. Do not use this realm for production applications.
+IMPORTANT: The realm used in this Solution Pattern is shared with *all* users on the cluster. *Do not use this realm for production applications*.
 
 . Go to the link:{sso-realm-url}[Solution Patterns Realm, window="_blank"].
-. If prompted, enter the username `{shared-realm-username}` and password `password`. You will see details for the {realm-name} realm if the login is successful.
+. If prompted, enter the username `{shared-realm-username}` and password `password`.
+. You will see details for the *{realm-name}* realm if the login is successful.
 . Select *Clients* from the vertical navigation menu on the left side of the screen.
 . Click the *Create* button at the top of the list of clients.
 . On the *Add Client* screen:
