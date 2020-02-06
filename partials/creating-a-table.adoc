@@ -13,7 +13,7 @@ To create a table for storing the orders, you will use PostgreSQL.
 +
 [subs="attributes+"]
 ----
-psql -U {user-username} -W -d orders
+psql -U {user-username} -W -d {table-name}
 ----
 . Enter the following when prompted:
 +
