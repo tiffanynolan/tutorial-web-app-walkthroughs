@@ -9,6 +9,7 @@
 
 //attributes
 :title: Connecting applications using asynchronous messaging
+
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
@@ -19,34 +20,3 @@
 
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to create a simple integration with built-in monitoring, so you can enable fault tolerant communication between applications.
-
-*Welcome to Cruddy’s Car Parts*
-
-In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
-
-* {create-messages-app} - Provides a RESTful API and a user interface to create order messages for customers.
-* {retrieve-messages-app} - Uses a RESTful API that is built with Red Hat Fuse for querying and creating orders in an underlying PostgreSQL database.
-
-image::images/arch.png[integration, role="integr8ly-img-responsive"]
-
-[type=walkthroughResource,serviceName=openshift]
-.Red Hat OpenShift
-****
-* link:{openshift-console-url}[Console, window="_blank"]
-* link:https://help.openshift.com/[OpenShift Online Help Center, window="_blank"]
-* link:https://blog.openshift.com/[OpenShift Blog, window="_blank"]
-****
-
-[type=walkthroughResource,serviceName=fuse]
-.Red Hat Fuse Online
-****
-* link:{fuse-url}[Console, window="_blank", id="resources-fuse-url"]
-* link:{fuse-documentation-url}[Fuse Documentation, window="_blank"]
-****
-
-[type=walkthroughResource,serviceName=amq-online-standard]
-.Red Hat AMQ Online
-****
-* link:{enmasse-url}[Console, window="_blank", , id="resources-enmasse-url"]
-* link:{amq-documentation-url}[AMQ Documentation, window="_blank"]
-****
