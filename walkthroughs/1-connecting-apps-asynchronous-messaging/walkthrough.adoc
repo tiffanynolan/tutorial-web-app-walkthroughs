@@ -98,50 +98,53 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 * link:https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
 ****
 
+[time=5]
+[#creating-a-table]
+==  Creating a table
+:context: creating-a-table
 
-[time=6]
-[id=creating-an-address]
-==  Creating an address
-:context: creating-connections
+To create a table for storing the orders, you will use PostgreSQL.
 
-To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
-
-****
-.What is AMQ Online?
-AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
-****
-
-. Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
-+
-NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
-. Select *Addresses* from the left hand menu.
-
-. Create a requests address:
-.. Select the *Create* button to start the *Create new address* wizard.
-.. Enter the following as the name:
+. Log into link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Namespace, window="_blank"] for this walkthrough.
+. Select *Applications > Pods* from the left hand menu.
+. Click the Pod that has the name *rhmi-lab-orders-db* followed by an ID, for example *rhmi-lab-orders-db-1-cfqh2*.
+. Select the *Terminal* tab on the Pod details screen.
+. Log in to the *orders* database using the command:
 +
 [subs="attributes+"]
 ----
-work-queue-requests
+psql -U {user-username} -W -d orders
 ----
-.. Select *queue* as the type and click *Next*.
-.. Select *Small Queue* as the address plan and click *Next*.
-.. Select *Create* to complete the wizard.
+. Enter the following when prompted:
++
+[subs="attributes+"]
+----
+password
+----
++
+For security reasons, the password is not shown in the terminal.
+Paste the password then press the *Enter* key.
 
-. Monitor the AMQ Online console until a green check mark is displayed beside the new address.
-Creating an address may take some time.
+. Paste the following as SQL to create the `received_orders` table:
++
+[subs="attributes+"]
+----
+CREATE TABLE received_orders (
+  id serial PRIMARY KEY,
+  product text NOT NULL,
+  quantity int NOT NULL,
+  message_id text NOT NULL,
+  datetime timestamp NOT NULL
+);
+----
 
 [type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the *Addresses* screen?
+Is the `received_orders` table listed when you enter the `\d` command in the terminal for the PostgreSQL pod?
 
 [type=verificationFail]
 {standard-fail-text}
 
-[type=taskResource]
-.Task Resources
-****
-* link:https://access.redhat.com/documentation/en-us/red_hat_amq/{amq-version}/html/using_amq_online_on_openshift_container_platform/managing-address-spaces-messaging#proc-create-address-space-console-messaging[Creating addresses using the AMQ Online Console, window="_blank"]
-****
+// end::task-table-setup[]
 
 
 [time=5]
