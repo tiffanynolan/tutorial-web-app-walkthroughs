@@ -10,7 +10,7 @@
 * link:https://blog.openshift.com/[Openshift Blog, window="_blank"]
 ****
 
-include::partials/creating-a-table.adoc[]
+include::/partials/creating-a-table.adoc[]
 
 [time=5]
 == Task Title
