@@ -26,7 +26,7 @@
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to setup Customer Application SSO to protect end-user applications by using standards such as OpenID Connect, OAuth 2.0, and SAML 2.0.
 
-NOTE: You must complete the _{sp1-title}_ Solution Pattern before starting this one.
+IMPORTANT: You must complete the _{sp1-title}_ Solution Pattern before starting this one.
 
 //If I make this a title, it breaks the layout.
 *Welcome back to Cruddy’s Car Parts*
@@ -61,17 +61,16 @@ The realms are what users belong to so they can log in.
 Realms are isolated from one another and can only manage and authenticate the users that belong to them.
 You can use the Customer Application SSO to log in to a realm and manage your *Clients*, *Roles*, *Users* and *Groups*.
 
-****
 .What is Customer Application SSO?
-Customer Application SSO, included with Red Hat Managed Integration, helps you to define the identities of your end users.
-Red Hat manages this instance, however there are some users that have admin level privileges to configure this instance.
+****
+Customer Application SSO, included with Red Hat Managed Integration, enables you to define the identities of your end users.
+Red Hat manages this instance, however there are some additional users with admin level privileges who can configure this instance.
 ****
 
 IMPORTANT: The realm used in this Solution Pattern is shared with *all* users on the cluster. *Do not use this realm for production applications*.
 
 . Go to the link:{sso-realm-url}[Solution Patterns Realm, window="_blank"].
-. If prompted, enter the username `{shared-realm-username}` and password `password`.
-. You will see details for the *{realm-name}* realm if the login is successful.
+. If prompted, enter the username `{shared-realm-username}` and password `password`. You will see the *Realm Settings* screen for the *{realm-name}* realm if the login is successful.
 . Select *Clients* from the vertical navigation menu on the left side of the screen.
 . Click the *Create* button at the top of the list of clients.
 . On the *Add Client* screen:
