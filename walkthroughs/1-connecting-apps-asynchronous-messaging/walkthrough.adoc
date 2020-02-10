@@ -9,7 +9,7 @@
 
 //attributes
 :title: 1 - Connecting applications using asynchronous messaging
-//:tasksdir: ../_tasks/
+//:tasksdir: ../_partials/
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
