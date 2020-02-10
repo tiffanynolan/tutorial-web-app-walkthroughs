@@ -8,7 +8,7 @@
 :sso-realm-url: {user-sso-url}/auth/admin/solution-patterns/console/index.html
 
 //attributes
-:title: Protecting applications using single sign-on
+:title: 2 - Protecting applications using single sign-on
 :sp1-title: Connecting applications using asynchronous messaging
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
