@@ -74,9 +74,9 @@ NOTE: The realm used in this Solution Pattern is shared with *all* users on the 
 
 Follow these steps to create a client.
 
-. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"], which is running on your {customer-sso-name} service. 
+. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"], which is running on your {customer-sso-name} service.
 .. If prompted, enter the username `{shared-realm-username}` and password `password`.
-. You will see the *Realm Settings* screen for the *{realm-name}* realm if the login is successful.
+. You will see the *{realm-name}* realm if the login is successful.
 . Select *Clients* from the vertical navigation menu on the left side of the screen.
 . Click the *Create* button on the top right of the Clients screen.
 . On the *Add Client* screen:
@@ -102,34 +102,34 @@ In the *Settings* tab on the *Client* page, make sure the *Enabled* toggle is se
 [time=7]
 == Creating a user
 
-Red Hat Single Sign-On provides identity brokering functionality, which facilitates login using a shared identity. For example, it is possible
-to create an *Identity Provider* in a *Realm* in SSO to enable login
-using social identities such as Google, Twitter, or GitHub. When the user
-chooses to login using an *Identity Provider* a *User* is automatically created
-in the SSO *Realm* with the details from their chosen
-*Identity Provider*.
+To secure your application with single sign-on and allow additional users to log in to your instance, you need to create users in a realm.
 
-In this Solution Pattern a *User* will be created manually to keep things
-simple.
+Follow these steps to create a user.
 
-. Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
-. Enter the username `{shared-realm-username}` and password `password` if prompted.
-. Select the *Users* entry in the side menu.
-. Click *Add user*.
+. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"], which is running on your {customer-sso-name} service.
+.. If prompted, enter the username `{shared-realm-username}` and password `password`.
+. You will see the *{realm-name}* realm if the login is successful.
+. Select *Users* from the vertical navigation menu on the left side of the screen.
+. Click the *Add user* button on the top right of the Users screen.
+. On the *Add user* screen:
 .. Enter the username `customer`.
-.. Leave other fields with their default values and click *Save*.
-. The `customer` user details should now be displayed with tabs along the top of the UI.
+.. Leave other fields with their default values.
+.. Click *Save*.
+. The *Details* tab should now be displayed with some additional tabs along the top of the screen.
 . Select the *Credentials* tab.
-.. Enter the password `customer-password` in the *New Password* field.
-.. Enter the same password in the *Password Confirmation* field.
+. Using the *Manage Password* form:
+.. In the *New Password* field, enter the password `customer-password`.
+.. In the *Password Confirmation* field, enter the same password.
 .. Set the *Temporary* toggle to the *OFF* position.
 +
-NOTE: If we left *Temporary* in the *ON* position the user would be forced to create a new password when they perform a login.
-.. Click the *Reset Password* button.
-.. When prompted click the *Change password* button in the modal.
+NOTE: If you leave the *Temporary* toggle in the *ON* position, the user will be forced to create a new password when they perform a login.
+.. Click *Reset Password*.
+. You will see a *Change password* confirmation modal.
+. Click the *Change password* button to confirm your changes.
 
 [type=verification]
-Select the *Users* item in the side menu. Click the *View all users* button. Is the `customer` user listed?
+Select *Users* from the vertical navigation menu on the left side of the screen. Click the *View all users* button on the top left of the Users screen, next to the Search field.
+Do you see the *customer* username listed in the table?
 
 [type=verificationFail]
 {standard-fail-text}
