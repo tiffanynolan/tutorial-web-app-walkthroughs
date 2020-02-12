@@ -27,12 +27,15 @@
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to set up {customer-sso-name} to protect end-user applications by using standards such as OpenID Connect, OAuth 2.0, and SAML 2.0.
 
-NOTE: You must complete the _{sp1-title}_ Solution Pattern before starting this one.
+IMPORTANT: You must complete the *{sp1-title}* Solution Pattern before starting this one.
 
 //If I make this a title, it breaks the layout.
 *Welcome back to Cruddy’s Car Parts*
 
-In this Solution Pattern, you will continue to use the {create-messages-app} and the {retrieve-messages-app} applications from the _{sp1-title}_ Solution Pattern. Now, you will protect them from unauthorised access by creating and enabling a single sign-on service.
+In this Solution Pattern, you will continue to use the {create-messages-app} and the {retrieve-messages-app} applications from the _{sp1-title}_ Solution Pattern.
+Now, you will protect them from unauthorised access by creating and enabling a single sign-on service.
+
+The following diagram shows the architecture of your solution.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
@@ -70,7 +73,7 @@ Customer Application SSO, included with Red Hat Managed Integration, enables you
 Red Hat manages this instance, however there are some additional users with admin level privileges who can configure this instance.
 ****
 
-NOTE: The realm used in this Solution Pattern is shared with *all* users on the cluster. *Do not use this realm for production applications*.
+IMPORTANT: The realm used in this Solution Pattern is shared with *all* users on the cluster. *Do not use this realm for production applications*.
 
 Follow these steps to create a client.
 

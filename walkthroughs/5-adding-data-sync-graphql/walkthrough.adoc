@@ -26,7 +26,7 @@ Learn how to build applications that can perform realtime data synchronization w
 This solution pattern will show you how to:
 
 * Configure and run the link:{showcase-app-url}[{data-sync-showcase-app}] on OpenShift.
-* Protect the application's frontend and backend using Red Hat SSO.
+* Protect the application's frontend and backend using {customer-sso-name}.
 * Explore all the capabilities provided by {data-sync-name}.
 
 The following diagram shows the architecture of the {data-sync-showcase-app}:

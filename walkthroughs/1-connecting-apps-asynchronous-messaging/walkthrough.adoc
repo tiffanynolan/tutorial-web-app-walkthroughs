@@ -25,8 +25,9 @@ Learn how to create a simple integration with built-in monitoring, so you can en
 
 In this Solution Pattern, you will be using two applications from a fictitious company called Cruddy’s Car Parts. Both applications are built with PatternFly, an open source design system, and Node.js.
 
-* {create-messages-app} - Provides a RESTful API and a user interface to create order messages for customers.
-* {retrieve-messages-app} - Uses a RESTful API that is built with Red Hat Fuse for querying and creating orders in an underlying PostgreSQL database.
+{create-messages-app} - Provides a RESTful API and a user interface to create order messages for customers.
+
+{retrieve-messages-app} - Uses a RESTful API that is built with Red Hat Fuse for querying and creating orders in an underlying PostgreSQL database.
 
 image::images/arch.png[integration, role="integr8ly-img-responsive"]
 
@@ -62,7 +63,8 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
 
 ****
-.What is AMQ Online?
+*What is AMQ Online?*
+
 AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
 ****
 
