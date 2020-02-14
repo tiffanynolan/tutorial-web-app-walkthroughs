@@ -1,6 +1,6 @@
 // update the component versions for each release
 :fuse-version: 7.4
-:amq-version: 7.4
+:amq-version: 7.5
 
 // URLs
 :openshift-console-url: {openshift-host}/console
@@ -9,6 +9,7 @@
 
 //attributes
 :title: 1 - Connecting applications using asynchronous messaging
+:namespace-name: sommevaluexxx
 //:tasksdir: ../_partials/
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
@@ -71,19 +72,20 @@ AMQ Online is a Red Hat Integration component that enables developers to self-pr
 . Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
 +
 NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
-. Select *Addresses* from the left hand menu.
-
-. Create a requests address:
-.. Select the *Create* button to start the *Create new address* wizard.
-.. Enter the following as the name:
+. Click the *Create* button to start the *Create an instance* wizard.
+. On the *Configure your component* form:
+.. For the *Namespace*, select `{namespace-name}`.
+.. In the *Name* field, enter
 +
 [subs="attributes+"]
 ----
 work-queue-requests
 ----
-.. Select *queue* as the type and click *Next*.
-.. Select *Small Queue* as the address plan and click *Next*.
-.. Select *Create* to complete the wizard.
+.. Select *Standard* as the type.
+.. Verify the *Address space plan* is set to *standard-small*.
+.. Verify the *Authentication service* is set to *none-authservice*.
+.. Click *Next*.
+. to complete the wizard.
 
 . Monitor the AMQ Online console until a green check mark is displayed beside the new address.
 Creating an address may take some time.

@@ -10,13 +10,14 @@
 //attributes
 :title: 2 - Protecting applications using single sign-on
 :sp1-title: Connecting applications using asynchronous messaging
+:namespace-name: sommevaluexxx
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
 :rhmi-sso-name: Managed Integration SSO instance
 :customer-sso-name: Customer Application SSO
 :client-name: {user-username}-order-entry-system
 :realm-name: solution-patterns
-:realm-display-name: Solution Patterns Realm
+:realm-display-name: Solution Patterns
 :shared-realm-username: developer
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
@@ -77,7 +78,7 @@ IMPORTANT: The realm used in this Solution Pattern is shared with *all* users on
 
 Follow these steps to create a client.
 
-. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"], which is running on your {customer-sso-name} service.
+. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"] realm, which is running on your {customer-sso-name} service.
 .. If prompted, enter the username `{shared-realm-username}` and password `password`.
 . You will see the *{realm-name}* realm if the login is successful.
 . Select *Clients* from the vertical navigation menu on the left side of the screen.
@@ -109,13 +110,13 @@ To secure your application with single sign-on and allow additional users to log
 
 Follow these steps to create a user.
 
-. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"], which is running on your {customer-sso-name} service.
+. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"] realm, which is running on your {customer-sso-name} service.
 .. If prompted, enter the username `{shared-realm-username}` and password `password`.
 . You will see the *{realm-name}* realm if the login is successful.
 . Select *Users* from the vertical navigation menu on the left side of the screen.
 . Click the *Add user* button on the top right of the Users screen.
 . On the *Add user* screen:
-.. Enter the username `customer`.
+.. In the *Username* field, enter `customer`.
 .. Leave other fields with their default values.
 .. Click *Save*.
 . The *Details* tab should now be displayed with some additional tabs along the top of the screen.
