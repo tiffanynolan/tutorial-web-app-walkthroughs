@@ -87,7 +87,7 @@ work-queue-requests
 ----
 .. For the *Type*, select *queue* and then click *Next*.
 .. For the *Plan*, select *Small Queue* and then click *Next*.
-.. On the *Summary* step, select *Create* to complete the wizard.
+.. On the *Summary* page, select *Create* to complete the wizard.
 
 . Monitor the AMQ Online console until a green check mark is displayed beside the new address.
 Creating an address may take some time.
@@ -112,7 +112,7 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 To create a table for storing the orders, you will use PostgreSQL.
 
 . Log into link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Namespace, window="_blank"] for this walkthrough.
-. Select *Applications > Pods* from the left hand menu.
+. Select *Workloads > Pods* from the vertical navigation menu on the left.
 . Click the Pod that has the name *rhmi-lab-orders-db* followed by an ID, for example *rhmi-lab-orders-db-1-cfqh2*.
 . Select the *Terminal* tab on the Pod details screen.
 . Log in to the *orders* database using the command:
@@ -173,10 +173,8 @@ To create a connector for the Fuse RESTful API, register the OpenAPI definition 
 NOTE: You are not logging into the shared Fuse Online instance, available from the link:/[All services tab].
 Starting this Solution Pattern provisioned an instance of Fuse Online which is not shared with other cluster users.
 
-. Select *Customizations > API Client Connectors* from the left hand menu.
-
+. Select *Customizations > API Client Connectors* from vertical navigation menu on the left.
 . Select the *Create API Connector* button to start the *API Client Connector* wizard.
-
 . When prompted to *Upload OpenAPI Document*, select *Use a URL*:
 .. Enter the following in the URL field:
 +
@@ -439,8 +437,7 @@ Is the integration displayed as *Running* on the *Integrations* screen of the li
 After setting up the integration between the {create-messages-app} and {retrieve-messages-app}, use the integration to create a new order.
 
 :node-url: http://frontend-node-app.apps.city.openshiftworkshop.com/
-:spring-url: http://spring-boot-rest-http-crud-spring-app.apps.city.openshift
-workshop.com/
+:spring-url: http://spring-boot-rest-http-crud-spring-app.apps.city.openshiftworkshop.com/
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
 
 . Navigate to the link:{route-order-entry-ui-host}[{create-messages-app}, window="_blank", id="{context}-1"].
