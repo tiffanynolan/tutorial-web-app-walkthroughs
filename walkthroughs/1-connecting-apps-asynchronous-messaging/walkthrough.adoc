@@ -48,7 +48,7 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 ****
 
 [type=walkthroughResource,serviceName=amq-online-standard]
-.Red Hat AMQ Online
+.Red Hat AMQ
 ****
 * link:{enmasse-url}[Console, window="_blank", , id="resources-enmasse-url"]
 * link:{amq-documentation-url}[AMQ Documentation, window="_blank"]
@@ -64,28 +64,30 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
 
 ****
-*What is AMQ Online?*
+*What is Red Hat AMQ?*
 
-AMQ Online is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
+Red Hat AMQ is a Red Hat Integration component that enables developers to self-provision messaging queues and topics on OpenShift.
 ****
 
-. Log into link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-1"].
+Follow these steps to create an address.
+
+. Go to link:{enmasse-url}[Red Hat AMQ, window="_blank", id="{context}-1"].
 +
-NOTE: If this is your first time opening the AMQ Online console, you will need to authenticate.
-. Click the *Create* button to start the *Create an instance* wizard.
-. On the *Configure your component* form:
-.. For the *Namespace*, select `{namespace-name}`.
-.. In the *Name* field, enter
+NOTE: If this is your first time opening the AMQ console, you will need to authenticate.
+. Select the Name/Namespace that corresponds to your username.
+. You will now see the AMQ Online console.
+. Select *Addresses* from the vertical navigation menu on the left.
+. Click the *+Create* button
+. For the *Create new address* wizard:
+.. In the *Name* field, enter:
 +
 [subs="attributes+"]
 ----
 work-queue-requests
 ----
-.. Select *Standard* as the type.
-.. Verify the *Address space plan* is set to *standard-small*.
-.. Verify the *Authentication service* is set to *none-authservice*.
-.. Click *Next*.
-. to complete the wizard.
+.. For the *Type*, select *queue* and then click *Next*.
+.. For the *Plan*, select *Small Queue* and then click *Next*.
+.. On the *Summary* step, select *Create* to complete the wizard.
 
 . Monitor the AMQ Online console until a green check mark is displayed beside the new address.
 Creating an address may take some time.
