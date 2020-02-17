@@ -9,7 +9,6 @@
 
 //attributes
 :title: 1 - Connecting applications using asynchronous messaging
-:namespace-name: sommevaluexxx
 //:tasksdir: ../_partials/
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
@@ -59,7 +58,8 @@ image::images/arch.png[integration, role="integr8ly-img-responsive"]
 [time=6]
 [id='creating-an-address']
 ==  Creating an address
-:context: creating-connections
+// task-scoped attributes
+:task-context: creating-connections
 
 To route messages from the {create-messages-app} to the {retrieve-messages-app}, you will need to create an address in Red Hat AMQ Online.
 
@@ -71,7 +71,7 @@ Red Hat AMQ is a Red Hat Integration component that enables developers to self-p
 
 Follow these steps to create an address.
 
-. Go to link:{enmasse-url}[Red Hat AMQ, window="_blank", id="{context}-1"].
+. Go to link:{enmasse-url}[Red Hat AMQ, window="_blank", id="{task-context}-1"].
 +
 NOTE: If this is your first time opening the AMQ console, you will need to authenticate.
 . Select the Name/Namespace that corresponds to your username.
@@ -93,7 +93,7 @@ work-queue-requests
 Creating an address may take some time.
 
 [type=verification]
-Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] console. Do you see your newly created address displayed on the *Addresses* screen?
+Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{task-context}-2"] console. Do you see your newly created address displayed on the *Addresses* screen?
 
 [type=verificationFail]
 {standard-fail-text}
@@ -107,9 +107,13 @@ Look at the link:{enmasse-url}[AMQ Online, window="_blank", id="{context}-2"] co
 [time=5]
 [#creating-a-table]
 ==  Creating a table
-:context: creating-a-table
+
+// task-scoped attributes
+:task-context: creating-a-table
 
 To create a table for storing the orders, you will use PostgreSQL.
+
+Follow these steps to create a table.
 
 . Log into link:{openshift-host}/console/project/{walkthrough-namespace}/overview[OpenShift Namespace, window="_blank"] for this walkthrough.
 . Select *Workloads > Pods* from the vertical navigation menu on the left.
@@ -156,19 +160,23 @@ Is the `received_orders` table listed when you enter the `\d` command in the ter
 [time=5]
 [id='creating-connections']
 == Creating connections
-:context: creating-connections
+
+// task-scoped attributes
+:task-context: creating-connections
 
 // tag::creating-api-connector[]
 
-[id='creating-api-connector_{context}']
+[id='creating-api-connector_{task-context}']
 [.integr8ly-docs-header]
 === Creating an API Connector
 
 Fuse Online is an enterprise integration platform that provides connectors for many services, such as Gmail and IRC.
 You can extend Fuse Online with custom connectors, using either OpenAPI definitions (Swagger) or JAR files.
-To create a connector for the Fuse RESTful API, register the OpenAPI definition as a *Customization*:
+To create a connector for the Fuse RESTful API, register the OpenAPI definition as a *Customization*.
 
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console.
+Follow these steps to create an API Connector.
+
+. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-1"] console.
 +
 NOTE: You are not logging into the shared Fuse Online instance, available from the link:/[All services tab].
 Starting this Solution Pattern provisioned an instance of Fuse Online which is not shared with other cluster users.
@@ -185,11 +193,8 @@ Starting this Solution Pattern provisioned an instance of Fuse Online which is n
 This OpenAPI (swagger) file defines the API for querying and creating orders in the underlying PostgreSQL database.
 
 .. Click *Next*.
-
 . When prompted with *Review Actions*, select *Next*.
-
 . When prompted with *Specify Security*, select *Next*.
-
 . When prompted with *Review/Edit Connector Details*:
 .. Enter the following in the *Name* field:
 +
@@ -197,11 +202,10 @@ This OpenAPI (swagger) file defines the API for querying and creating orders in 
 ----
 Order System REST API Connector
 ----
-
 .. Click *Save*.
 
 [type=verification]
-Is the new connector *Order System REST API Connector* displayed on the *Customizations > API Client Connectors* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-2"] console?
+Is the new connector *Order System REST API Connector* displayed on the *Customizations > API Client Connectors* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-2"] console?
 
 [type=verificationFail]
 {standard-fail-text}
@@ -211,14 +215,15 @@ Is the new connector *Order System REST API Connector* displayed on the *Customi
 
 // tag::creating-http-connection[]
 
-[id='creating-http-connection-in-fuse_{context}']
+[id='creating-http-connection-in-fuse_{task-context}']
 [.integr8ly-docs-header]
 === Creating HTTP connection to CRUD App
 
 To enable Fuse Online to send messages from the queue to the {retrieve-messages-app}, create a connection in Red Hat Fuse Online using the API connector you created earlier.
 
+Follow these steps to create a connection to the CRUD App.
 
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-3"] console.
+. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-3"] console.
 
 . Select *Connections* from the left hand menu.
 
@@ -247,7 +252,7 @@ Order System REST API Connection
 
 
 [type=verification]
-Is the new connection displayed on the *Connections* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-4"] console?
+Is the new connection displayed on the *Connections* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-4"] console?
 
 [type=verificationFail]
 {standard-fail-text}
@@ -255,25 +260,23 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 
 // end::creating-http-connection[]
 
-[id='creating-amqp-connection-in-fuse_{context}']
+[id='creating-amqp-connection-in-fuse_{task-context}']
 [.integr8ly-docs-header]
 === Creating an AMQP connection in Red Hat Fuse Online
 
-To allow Fuse Online to consume messages placed on the queue by the {create-messages-app}, create a connection in Red Hat Fuse Online:
-
-
+// task-scoped attributes
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
 :openshift-url: https://master.city.openshiftworkshop.com/console/project/eval/overview
 :enmasse: AMQ Online
 
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-5"] console.
+To allow Fuse Online to consume messages placed on the queue by the {create-messages-app}, create a connection in Red Hat Fuse Online:
 
+Follow these steps to create an AMQP connection.
+
+. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-5"] console.
 . Select *Connections* from the left hand menu.
-
 . Select the *Create Connection* button to start the *Create Connection* wizard.
-
 . Select *AMQP Message Broker* to configure an *AMQP* connection.
-
 . Enter the connection URI relating to {enmasse}:
 +
 [subs="attributes+"]
@@ -294,23 +297,18 @@ amqp://{enmasse-broker-url}:5672?amqp.saslMechanisms=PLAIN
 ----
 {enmasse-credentials-password}
 ----
-
 . Set the value of *Check certificates* to `Disable`.
-
 . Select the *Validate* button to check that the values are valid.
-
 . Click *Next* and enter a name for the connection, for example:
 +
 [subs="attributes+"]
 ----
 Incoming Order Queue Connection
 ----
-
 . Click *Save*.
 
-
 [type=verification]
-Is the new connection displayed on the *Connections* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-6"] console?
+Is the new connection displayed on the *Connections* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-6"] console?
 
 
 [type=verificationFail]
@@ -331,32 +329,26 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 [time=5]
 [id='creating-an-integration']
 == Creating an integration
-:context: creating-an-integration
+
+// task-scoped attributes
+:task-context: creating-an-integration
 
 // end::task-creating-fuse-integration[]
 
-
-To use the Fuse connections, create an integration in Red Hat Fuse Online:
+Follow these steps to create an integration.
 
 . Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="wt1a_2_3_1_fuse-url"] console.
-
 . Select *Integrations* from the left hand menu.
-
 . Select the *Create Integration* button to start the *Create Integration* wizard.
-
 . Choose *Incoming Order Queue Connection* as the *Start Connection*.
-
 . When prompted to *Choose an action*, select *Subscribe for messages* and click the *Select* button.
-
 . When prompted for a *Destination name*, enter:
 +
 [subs="attributes+"]
 ----
 work-queue-requests
 ----
-
 . Choose *Queue* as the *Destination type* and click *Next*.
-
 . When prompted to *Specify Output Data Type*:
 .. Select *JSON Schema* as the type.
 .. Enter the following in the *Definition* field:
@@ -383,26 +375,20 @@ work-queue-requests
 }
 ----
 .. Click *Next*.
-
 . Choose *Order System REST API Connection* as the *Finish Connection*.
-
 . When prompted to *Choose an action*, select *Create an order* and click the *Select* button.
-
 . When prompted with *Configure the action* click *Next*.
-
 . When prompted to *Add to Integration*, click on the blue *+* icon between the *Subscribe for messages* and *Create an order* elements.
-
 . Select *Data Mapper* to map source and target fields in the corresponding JSON schemas:
 .. Expand the *body* item in the *Target* tree.
 .. Click and drag *datetime*, *message_id*, *product*, and *quantity* from the *Source* column to their corresponding locations under *body* in the *Target* column.
 .. Click *Done* to navigate back to the *Integration* screen.
-
 . Click *Publish*.
 . When prompted, enter a name, for example:
 +
 [subs="attributes+"]
 ----
-Walkthrough 1A
+Integration Solution 1
 ----
 . Click *Save and publish*.
 
@@ -410,7 +396,7 @@ Walkthrough 1A
 The integration may take some time to complete building.
 
 [type=verification]
-Is the integration displayed as *Running* on the *Integrations* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console?
+Is the integration displayed as *Running* on the *Integrations* screen of the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-1"] console?
 
 [type=verificationFail]
 
@@ -432,7 +418,7 @@ Is the integration displayed as *Running* on the *Integrations* screen of the li
 [time=5]
 [id='using-the-integration']
 == Using the integration
-:context: using-the-application-integration
+:task-context: using-the-application-integration
 
 After setting up the integration between the {create-messages-app} and {retrieve-messages-app}, use the integration to create a new order.
 
@@ -440,12 +426,12 @@ After setting up the integration between the {create-messages-app} and {retrieve
 :spring-url: http://spring-boot-rest-http-crud-spring-app.apps.city.openshiftworkshop.com/
 :fuse-url: https://eval.apps.city.openshiftworkshop.com/
 
-. Navigate to the link:{route-order-entry-ui-host}[{create-messages-app}, window="_blank", id="{context}-1"].
+. Navigate to the link:{route-order-entry-ui-host}[{create-messages-app}, window="_blank", id="{task-context}-1"].
 . Click the *Create an order* button.
 . Enter a value for *Part Name*, e.g `Engine`, and a quantity, e.g `1`.
 . Click *Save*.
 
-. Navigate to the link:{route-order-management-ui-host}[{retrieve-messages-app}, window="_blank", id="{context}-2"].
+. Navigate to the link:{route-order-management-ui-host}[{retrieve-messages-app}, window="_blank", id="{task-context}-2"].
 
 . Check that the entry from the {create-messages-app} is listed in the {retrieve-messages-app}.
 
@@ -454,7 +440,7 @@ After setting up the integration between the {create-messages-app} and {retrieve
 ****
 View the activity log:
 
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-3"] console.
+. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-3"] console.
 . Select *Integrations* from the left hand menu.
 . Click *View* button for your integration.
 . Click the *Activity* tab.
