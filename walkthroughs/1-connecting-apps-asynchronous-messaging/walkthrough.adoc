@@ -9,7 +9,6 @@
 
 //attributes
 :title: 1 - Connecting applications using asynchronous messaging
-//:tasksdir: ../_partials/
 :create-messages-app: Order Entry System
 :retrieve-messages-app: Order Management System
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
@@ -224,13 +223,9 @@ To enable Fuse Online to send messages from the queue to the {retrieve-messages-
 Follow these steps to create a connection to the CRUD App.
 
 . Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{task-context}-3"] console.
-
 . Select *Connections* from the left hand menu.
-
 . Select the *Create Connection* button to start the *Create Connection* wizard.
-
 . When prompted with *Select connector*, select *Order System REST API Connector*.
-
 . When prompted with *Configure connection*:
 .. Enter the following in the *Host* field:
 +
@@ -241,7 +236,6 @@ Follow these steps to create a connection to the CRUD App.
 This is the location of the *rhmi-lab-internal-fuse-api* application that was created by the API Connector above
 
 .. Enter a forward slash, that is, `/`, in the *Base path* field and click *Next*
-
 . When prompted with *Name connection*:
 .. Enter the following in the *Name* field:
 +
@@ -256,8 +250,6 @@ Is the new connection displayed on the *Connections* screen of the link:{fuse-ur
 
 [type=verificationFail]
 {standard-fail-text}
-
-
 // end::creating-http-connection[]
 
 [id='creating-amqp-connection-in-fuse_{task-context}']

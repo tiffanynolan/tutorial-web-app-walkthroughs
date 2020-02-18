@@ -12,7 +12,7 @@
 :integreatly-name: Managed Integration
 :data-sync-name: Data Sync
 :data-sync-showcase-app: Data Sync showcase application
-:customer-sso-name: Customer Application SSO instance
+:customer-sso-name: Customer Application SSO
 :shared-realm-username: developer
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
@@ -51,7 +51,7 @@ image::images/arch.png[architecture, role="integr8ly-img-responsive"]
 [time=10]
 == Deploying the Data Sync showcase application
 
-. Navigate to the link:{openshift-host}/console/project/{walkthrough-namespace}/overview[project console, window="_blank"] in OpenShift.
+. Go to the link:{openshift-host}/console/project/{walkthrough-namespace}/overview[project console, window="_blank"] in OpenShift.
 . Click on the *Browse Catalog* button.
 . Search the service catalog for 'Data Sync Showcase'.
 . Click on the 'Data Sync Showcase' entry to add it to your project.
@@ -64,7 +64,7 @@ image::images/arch.png[architecture, role="integr8ly-img-responsive"]
 +
 Once the pods are running, you can use the GraphQL playground to interact with the server API as described in the next step.
 
-. Navigate to the link:{route-ionic-showcase-server-host}/graphql[GraphQL playground, window="_blank"] and replace the text in the left pane of the screen with the following query and mutation:
+. Go to the link:{route-ionic-showcase-server-host}/graphql[GraphQL playground, window="_blank"] and replace the text in the left pane of the screen with the following query and mutation:
 
 ----
 query listTasks {
@@ -122,7 +122,7 @@ Verify that you followed each step in the procedure above.  If you are still hav
 The {data-sync-showcase-app} demonstrates the key capabilities provided by the {data-sync-name} framework.
 It can be run either as a hybrid mobile application, or a Progressive Web App (PWA).
 
-. Navigate to the link:{route-ionic-showcase-server-host}[Data Sync application user interface, window="_blank"]
+. Go to the link:{route-ionic-showcase-server-host}[Data Sync application user interface, window="_blank"]
 . Select *Manage Tasks* from the left hand menu.
 . Create a task by clicking on the plus icon in the top right-hand side of the screen.
 . Add a title and description, of your choosing, to the task and click *Create*.
@@ -147,13 +147,24 @@ In this task, we will protect both the frontend and the backend of the {data-syn
 
 === Configuring and protecting the frontend app
 
-. Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
-. Enter the username `{shared-realm-username}` and password `password` if prompted.
-. Create a new client for the frontend app:
-.. Choose *Clients* under *Configure* in the menu on the left of the screen.
-.. Click on the *Create* button on the top-right corner to create a new client.
-.. Enter `{user-username}-frontend` for Client ID. Do not change any other fields.
-.. Save the client. You should see the *Settings* page of the client.
+Follow these steps to create a client.
+
+. Go to the link:{sso-realm-url}[{realm-display-name}, window="_blank"] realm, which is running on your {customer-sso-name} service.
+.. If prompted, enter the username `{shared-realm-username}` and password `password`.
+. You will see the *{realm-name}* realm if the login is successful.
+. Select *Clients* from the vertical navigation menu on the left side of the screen.
+. Click the *Create* button on the top right of the Clients screen.
+. On the *Add Client* screen:
+.. In the *Client ID* field, enter
++
+[subs="attributes+"]
+----
+{user-username}-frontend
+----
+.. Verify the *Client Protocol* is set to *openid-connect*.
+.. Click *Save*.
+. You will see the *Settings* screen for the *{client-name}* client if the save is successful.
+. on the *Settings* page:
 .. Change `Valid Redirect URIs` to `{route-ionic-showcase-server-host}*`
 .. Change `Web Origins` to `*`
 .. Click on the *Save* button
