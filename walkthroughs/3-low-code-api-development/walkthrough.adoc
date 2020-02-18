@@ -1,5 +1,5 @@
 // update the component versions for each release
-:fuse-version: 7.4
+:fuse-version: 7.5
 
 // URLs
 :openshift-console-url: {openshift-host}/console
@@ -38,7 +38,7 @@ It also allows you to identify important design decisions prior to coding and de
 ****
 
 [type=walkthroughResource,serviceName=fuse]
-.Fuse Online
+.Red Hat Fuse Online
 ****
 * link:{fuse-url}[Console, window="_blank"]
 ****
@@ -314,7 +314,7 @@ The *Add to Integration* screen should now display your Slack connection with a 
 . Enter the following in the *string* field under the menu:
 +
 ----
-Hello from, 
+Hello from,
 ----
 
 {blank}

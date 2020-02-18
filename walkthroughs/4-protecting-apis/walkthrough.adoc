@@ -1,5 +1,5 @@
 // update the component versions for each release
-:fuse-version: 7.4
+:fuse-version: 7.5
 :3scale-version: 2.7
 
 // URLs
@@ -16,7 +16,8 @@
 [id='4-protecting-apis']
 = {title}
 
-This Solution Pattern demonstrates how to import an API into 3scale API Management and secure it using API Key security.
+// word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
+Learn how to import an API into 3scale API Management and secure it using API Key security.
 
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
@@ -25,13 +26,13 @@ This Solution Pattern demonstrates how to import an API into 3scale API Manageme
 ****
 
 [type=walkthroughResource,serviceName=fuse]
-.Fuse Online
+.Red Hat Fuse Online
 ****
 * link:{fuse-url}[Console, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=3scale]
-.3Scale
+.Red Hat 3scale API Management Platform 
 ****
 * link:{api-management-url}[Console, window="_blank"]
 * link:https://developers.redhat.com/products/3scale/overview/[3Scale Overview, window="_blank"]
@@ -73,7 +74,7 @@ The import process can take a few minutes to complete.
 Can you see the *i-greeting-integration-{user-username}* listed in the *APIs* section of the 3scale Dashboard ?
 
 [type=verificationFail]
-Wait a little longer, or try the import again. {standard-fail-text} 
+Wait a little longer, or try the import again. {standard-fail-text}
 
 [time=10]
 == Configuring the API
@@ -109,7 +110,7 @@ NOTE: We change the URL because the default one generated is usually too long an
 
 . Click the *Create Mapping Rule* button.
 
-. Choose the *Configuration* item in the *Integration* dropdown menu. 
+. Choose the *Configuration* item in the *Integration* dropdown menu.
 +
 Note: There is a warning icon next to this link that suggests promoting the configuration to the Staging Environment.
 

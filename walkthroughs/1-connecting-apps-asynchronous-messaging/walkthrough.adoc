@@ -1,5 +1,5 @@
 // update the component versions for each release
-:fuse-version: 7.4
+:fuse-version: 7.5
 :amq-version: 7.5
 
 // URLs
