@@ -44,7 +44,7 @@ It also allows you to identify important design decisions prior to coding and de
 ****
 
 [type=walkthroughResource,serviceName=apicurio]
-.Apicurio
+.Red Hat API Designer
 ****
 * link:{apicurio-url}[Console, window="_blank"]
 ****
@@ -52,7 +52,7 @@ It also allows you to identify important design decisions prior to coding and de
 :sectnums:
 
 [time=20]
-== Creating an OpenAPI Spec using Apicurio
+== Creating an OpenAPI Spec using API Designer
 
 When creating an API it's beneficial to start from the bottom-up. Creating an
 OpenAPI Specification prior to coding forces developers to consider API usage
@@ -61,12 +61,12 @@ understanding between the server and clients regarding the behaviour of the
 API.
 
 An OpenAPI Specification can be defined in YAML/JSON format. In this section
-we'll be using Apicurio - a visual design tool - to generate this YAML/JSON
+we'll be using API Designer - a visual design tool - to generate this YAML/JSON
 document.
 
 === Create the Base API Definition
 
-. Navigate to the link:{apicurio-url}[Apicurio Console, window="_blank"]
+. Go to link:{apicurio-url}[API Designer, window="_blank"]
 . Login if prompted and click the new *New API* button.
 . Rename your API from "New API" to:
 +
@@ -175,23 +175,20 @@ For example, a Slack *Connection* in Fuse Online requires an *API Token* and *Sl
 You already have an account with link:https://slack.com/[Slack, window="_blank", id="{context}-1"].
 
 .Procedure
-. Navigate to the link:https://slack.com/create[Create a new workspace, window="_blank", id="{context}-2"] page.
+. Go to the link:https://slack.com/create[Create a new workspace, window="_blank", id="{context}-2"] page.
 
 . Enter your email address and click *Next*.
-Complete the Slack log in process.
-
+. Complete the Slack log in process.
 . When prompted *What's the name of your company or team?* enter::
 +
 ----
 low-code-workspace
 ----
-
 . When prompted *What’s a project your team is working on?* enter:
 +
 ----
 low-code-demo
 ----
-
 . Click *Skip for now* when prompted to add team members.
 . Answer the follow-up questions related to your workspace and choose the *Free* plan.
 . Click *Launch My Workspace* when prompted.
@@ -217,7 +214,7 @@ NOTE: This is your personal Fuse Online instance and not the shared instance ava
 You are prompted for configuration details.
 
 . Obtain a URL for the *Slack Webhook URL* field:
-.. Navigate to the Slack Apps portal at link:https://api.slack.com/apps[api.slack.com/apps, window="_blank", id="{context}-5"].
+.. Go to the Slack Apps portal at link:https://api.slack.com/apps[api.slack.com/apps, window="_blank", id="{context}-5"].
 .. Click *Create an App*.
 .. Enter the following in the *App Name* field:
 +
@@ -225,7 +222,7 @@ You are prompted for configuration details.
 Fuse Online Demo
 ----
 .. Choose *low-code-workspace* from the *Development Slack Workspace* dropdown.
-.. Click "Create App".
+.. Click *Create App*.
 .. On the following screen under the *Add features and functionality* click *Incoming Webhooks*.
 .. Change the *Activate Incoming Webhooks* switch to the *On* position.
 .. Scroll down and click *Add New Webhook to Workspace*.
@@ -233,17 +230,13 @@ Fuse Online Demo
 +
 You are redirected back to the *Incoming Webhooks* page.
 .. Copy the *Webhook URL* displayed at the bottom of the page using the *Copy* button.
-
 . Paste the copied *Webhook URL* value into the *Slack Webhook URL* field in Fuse Online.
-
 . Obtain a value for the *Token for Accessing Slack API* field:
-.. Navigate to the Slack API Token portal at link:https://api.slack.com/custom-integrations/legacy-tokens[api.slack.com/custom-integrations/legacy-tokens, window="_blank", id="{context}-6"].
+.. Go to the Slack API Token portal at link:https://api.slack.com/custom-integrations/legacy-tokens[api.slack.com/custom-integrations/legacy-tokens, window="_blank", id="{context}-6"].
 .. Scroll down to the *Legacy token generator* section.
 .. Click *Create token* button next to *low-code-workspace*.
 .. Copy the generated token.
-
 . Paste the generated token into the *Token for Accessing Slack API* field in Fuse Online.
-
 . Enter the following in the *Sending User Name for Messages* field:
 +
 ----
@@ -252,15 +245,12 @@ Fuse Online
 
 . Click *Validate* in Fuse Online and verify that a *Slack has been successfully validated.* message appears.
 This validation sends a message to the *low-code-demo* channel.
-
 . Click *Next*.
-
 . Enter the following in the *Name* field on the *Name connection* screen:
 +
 ----
 Greeting Slack Target
 ----
-
 . Click *Save*.
 
 [type=verification]
@@ -275,42 +265,32 @@ Is a *Greeting Slack Target* entry listed in the Fuse Online *Connections* scree
 
 === Import the OpenAPI Specification
 
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console.
+. Go to link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"].
 . Select *Integrations* from the left navigation menu.
 . Click the *Create Integration* button to start the *New Integration* wizard.
 . Choose the *API Provider* option when prompted with *Choose a connection* screen.
-. Drag and drop the OpenAPI Spec YAML file downloaded from Apicurio earlier into the *Upload an OpenAPI file* box and click the *Next* button.
-. Click *Next* to navigate to the *Operations* screen.
+. Drag and drop the OpenAPI Spec YAML file downloaded from API Designer earlier into the *Upload an OpenAPI file* box and click the *Next* button.
+. Click *Next* to go to the *Operations* screen.
 
 [type=verification]
 Is a *POST /greeting* operation displayed on the *Operations* screen in Fuse Online?
 
 [type=verificationFail]
-Verify that you created the POST operation correctly in the OpenAPI Spec using Apicurio. Contact an administrator if the problem persists.
+Verify that you created the POST operation correctly in the OpenAPI Spec using API Designer. Contact an administrator if the problem persists.
 
 === Create a Flow for the API Operation
 
 . Click the *Create flow* button for the *POST /greeting* item. The *Add to Integration* page appears displaying the *Provided API* and the *Provided API Return Path*.
-
 . Click the blue plus icon in the center to add a step.
-
 . Select the *Greeting Slack Target* on the *Choose a connection* screen. This will add a step between the *Provided API* and the *Provided API Return Path*.
-
 . When prompted to *Choose an action* select *Channel*. You can use this to send a message to a specific channel in your Slack workspace.
-
 . Use the *Channel* menu to select the *low-code-demo* channel and click *Next*.
 The *Add to Integration* screen should now display your Slack connection with a triangular *Data Type Mismatch* warning icon.
-
 . Click the *Warning Icon* on the Slack *Channel* panel and choose *Add a data mapping step*.
-
 . From the *Data Mapper* screen click the *body* field in the *Source* panel to expand it.
-
 . Click the *name* field under the *body*, then click the *message* field in the *Target* panel. This maps the value of the incoming HTTP request *body* to the outgoing Slack *message* property.
-
 . In the right hand *Mapping Details* panel, click the *Add Transformation* under the *Targets* section to add a transformation.
-
 . Change the transformation type from *Append* to *Prepend*.
-
 . Enter the following in the *string* field under the menu:
 +
 ----

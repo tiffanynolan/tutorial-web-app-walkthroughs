@@ -76,8 +76,8 @@ NOTE: If this is your first time opening the AMQ console, you will need to authe
 . Select the Name/Namespace that corresponds to your username.
 . You will now see the AMQ Online console.
 . Select *Addresses* from the vertical navigation menu on the left.
-. Click the *+Create* button
-. For the *Create new address* wizard:
+. Click the *+Create* button.
+. You will see the *Create new address* wizard.
 .. In the *Name* field, enter:
 +
 [subs="attributes+"]

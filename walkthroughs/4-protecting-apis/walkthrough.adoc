@@ -32,7 +32,7 @@ Learn how to import an API into 3scale API Management and secure it using API Ke
 ****
 
 [type=walkthroughResource,serviceName=3scale]
-.Red Hat 3scale API Management Platform 
+.Red Hat 3scale API Management Platform
 ****
 * link:{api-management-url}[Console, window="_blank"]
 * link:https://developers.redhat.com/products/3scale/overview/[3Scale Overview, window="_blank"]
@@ -80,7 +80,7 @@ Wait a little longer, or try the import again. {standard-fail-text}
 == Configuring the API
 
 === Set the Staging Environment API URL
-. Navigate to the link:{api-management-url}[{3scale-name} 3scale Dashboard, window="_blank"], logging if necessary.
+. Go to the link:{api-management-url}[{3scale-name} 3scale Dashboard, window="_blank"], logging if necessary.
 . Choose *i-greeting-integration-{user-username}* from the top navigation menu to view the {3scale-name} homepage.
 +
 NOTE: If the *i-greeting-integration-{user-username}* is not listed in the top navigation menu that means it is still being imported. Wait a while, refresh the page, and try again.
@@ -101,19 +101,13 @@ NOTE: We change the URL because the default one generated is usually too long an
 === Create a Mapping Rule for the Greeting Endpoint
 
 . Choose *Integration > Mapping Rules* from the left menu.
-
 . Click *Add Mapping Rule*.
-
 . Select the *POST* option for *Verb*.
-
 . Enter the `/greeting` for the *Pattern*.
-
 . Click the *Create Mapping Rule* button.
-
 . Choose the *Configuration* item in the *Integration* dropdown menu.
 +
 Note: There is a warning icon next to this link that suggests promoting the configuration to the Staging Environment.
-
 . On the *Configuration* screen click *Promote v.2 to Staging*.
 
 [type=verification]
@@ -156,7 +150,6 @@ In this step a new *Application* will be created for the *Developer* Group,  ass
 low-code-app-{user-username}
 ----
 . Select *Create Application*.
-
 . Set a custom *User Key* for the application:
 . On the *low-code-app-{user-username}* Application screen you were redirected to, scroll to the *API Credentials* section.
 . Click the green pencil icon beside the *API User Key*
