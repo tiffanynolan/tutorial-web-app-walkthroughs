@@ -3,7 +3,6 @@
 
 // URLs
 :openshift-console-url: {openshift-host}/console
-:fuse-url: https://eval.apps.city.openshiftworkshop.com/
 :route: https://wt3-{user-username}-3scale.{openshift-app-host}
 
 //attributes
@@ -13,6 +12,8 @@
 //id syntax is used here for the custom IDs because that is how the Solution Explorer sorts these within groups
 [id='3-low-code-api-development']
 = {title}
+
+= {walkthrough}
 
 // word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
 Learn how to implement a container-native OpenAPI RESTful API without coding.
@@ -37,12 +38,130 @@ It also allows you to identify important design decisions prior to coding and de
 ****
 
 [type=walkthroughResource,serviceName=fuse]
-.Red Hat Fuse Online
+.Fuse Online
 ****
 * link:{fuse-url}[Console, window="_blank"]
 ****
 
+[type=walkthroughResource,serviceName=apicurio]
+.Apicurio
+****
+* link:{apicurio-url}[Console, window="_blank"]
+****
+
 :sectnums:
+
+[time=20]
+== Creating an OpenAPI Spec using Apicurio
+
+When creating an API it's beneficial to start from the bottom-up. Creating an
+OpenAPI Specification prior to coding forces developers to consider API usage
+patterns, provides a blueprint for the API development, and creates an
+understanding between the server and clients regarding the behaviour of the
+API.
+
+An OpenAPI Specification can be defined in YAML/JSON format. In this section
+we'll be using Apicurio - a visual design tool - to generate this YAML/JSON
+document.
+
+=== Create the Base API Definition
+
+. Navigate to the link:{apicurio-url}[Apicurio Console, window="_blank"]
+. Login if prompted and click the new *New API* button.
+. Rename your API from "New API" to:
++
+----
+Greeting API
+----
+
+. Edit the *Description* in the *Design* tab on the right under the *INFO* section:
++
+----
+My greeting API
+----
+
+. Click *Add a data type* under the *Data Types* heading on the left of the screen.
+
+. In the *Enter Basic Information* section enter the following in the *Name* field:
++
+----
+Name
+----
+
+. Enter the following JSON in the *Enter JSON Example* field:
++
+[subs="attributes+"]
+----
+{
+    "name": "shadowman"
+}
+----
+
+. Make sure *No Resource* is selected in the *Choose to create a REST Resource with the Data Type* section.
+. Scroll down and click *Save*.
+
+[type=verification]
+Is `</> Name` listed under the *Data Types* on the left of the screen?
+
+[type=verificationFail]
+Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
+
+
+=== Creating a POST Resource Path
+
+A *Path* represents an API endpoint/operation and the associated parameters required to invoke it.
+
+. Click *Add a path* under the *Paths* heading of the *Provide API Definition* screen.
+
+. In the window that appears, enter the following in the *Path* field:
++
+----
+/greeting
+----
+
+. Click *Add* to confirm your entry.
+
+. Click your new */greeting* endpoint under the *Paths* heading.
+
+. Click the *Create Operation* button for *POST* in the *Operations* section. The *POST* item will become an orange button.
+
+. Click the now orange *POST* button to access the *Design* screen for the *POST* operation.
+
+. Enter the following in the now visible *Summary* field:
++
+----
+Greet with name
+----
+
+. Enter the following in the *Operation ID* field:
++
+----
+greetname
+----
+
+. In the *Request Body* section, click *Add a request body*.
+
+. Choose *Name* as the type from the dropdown.
+
+. In the *Responses* section click *Add a response*.
+.. In the window that appears choose *200 OK* as the option.
+.. Click *Add*.
+.. Click *No description* beside the *200 OK* response and enter the following in the *Description* field:
++
+----
+Greeting response
+----
+.. Click *No Type* and change the *Type* field to *String as String*.
+. Click *Save* in the top right corner of the page to save your work.
+
+=== Export the OpenAPI Spec as JSON/YAML
+
+. Click the down arrow beside *Save As...* in the top right.
+. Choose *Save as YAML*.
+
++
+NOTE: Keep this file safe. It will be used to create the API implementation in Fuse Online shortly.
+
 
 [time=20]
 == Creating a Slack Connection in Fuse Online
@@ -79,7 +198,6 @@ low-code-demo
 
 [type=verification]
 Can you access your workspace, and navigate to the *low-code-demo* channel listed on the left of the workspace?
-
 
 [type=verificationFail]
 Verify that you followed each step in the procedure above.  If you are still having issues, check your email, there may be information sent to you about accessing your workspace.
@@ -152,135 +270,80 @@ Is a *Greeting Slack Target* entry listed in the Fuse Online *Connections* scree
 {standard-fail-text}
 
 [time=20]
-== Creating an API Integration in Fuse Online
+== Create the API as an Integration in Fuse Online
+:context: implementing-api
 
-=== Creating an Integration with API details
-:context: creating-api-integration
-In this procedure, you create an integration with an API and include a data type.
-A *Data Type* represents a data structure that can be passed to your API and can then be used as parameters in your API definition and within the Fuse Online *Integration Flow Editor* to transform and map data as part of an *Integration*.
+=== Import the OpenAPI Specification
 
 . Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console.
-
-. Choose *Integrations* from the left navigation menu.
-
+. Select *Integrations* from the left navigation menu.
 . Click the *Create Integration* button to start the *New Integration* wizard.
-
-. Choose *API Provider* on the *Choose a Start Connection* screen.
-
-. When prompted choose *Create*
-. Click *Next* to navigate to the *Provide API Definition* screen.
-
-. Rename your API from "Untitled API" to:
-+
-----
-Greeting API
-----
-
-. Edit the *Description* in the *Design* tab on the right in the *INFO* section:
-+
-----
-My greeting API
-----
-
-. Click *Add a data type* under the *Data Types* heading on the left of the *API Designer* screen.
-
-. In the *Enter Basic Information* section enter the following in the *Name* field:
-+
-----
-Name
-----
-
-. Enter the following JSON in the *Enter JSON Example* field:
-+
-[subs="attributes+"]
-----
-{
-    "name": "shadowman"
-}
-----
-
-. Make sure *No Resource* is selected in the *Choose to create a REST Resource with the Data Type* section.
-. Scroll down and click *Save*.
+. Choose the *API Provider* option when prompted with *Choose a connection* screen.
+. Drag and drop the OpenAPI Spec YAML file downloaded from Apicurio earlier into the *Upload an OpenAPI file* box and click the *Next* button.
+. Click *Next* to navigate to the *Operations* screen.
 
 [type=verification]
-Is `</> Name` listed under the *Data Types* on the *Provide API Definition* screen?
-
+Is a *POST /greeting* operation displayed on the *Operations* screen in Fuse Online?
 
 [type=verificationFail]
-{standard-fail-text}
+Verify that you created the POST operation correctly in the OpenAPI Spec using Apicurio. Contact an administrator if the problem persists.
 
+=== Create a Flow for the API Operation
 
-=== Creating a POST Resource Path
+. Click the *Create flow* button for the *POST /greeting* item. The *Add to Integration* page appears displaying the *Provided API* and the *Provided API Return Path*.
 
-A *Path* represents an API endpoint/operation and the associated parameters required to invoke it.
+. Click the blue plus icon in the center to add a step.
 
-. Click *Add a path* under the *Paths* heading of the *Provide API Definition* screen.
+. Select the *Greeting Slack Target* on the *Choose a connection* screen. This will add a step between the *Provided API* and the *Provided API Return Path*.
 
-. In the window that appears, enter the following in the *Path* field:
+. When prompted to *Choose an action* select *Channel*. You can use this to send a message to a specific channel in your Slack workspace.
+
+. Use the *Channel* menu to select the *low-code-demo* channel and click *Next*.
+The *Add to Integration* screen should now display your Slack connection with a triangular *Data Type Mismatch* warning icon.
+
+. Click the *Warning Icon* on the Slack *Channel* panel and choose *Add a data mapping step*.
+
+. From the *Data Mapper* screen click the *body* field in the *Source* panel to expand it.
+
+. Click the *name* field under the *body*, then click the *message* field in the *Target* panel. This maps the value of the incoming HTTP request *body* to the outgoing Slack *message* property.
+
+. In the right hand *Mapping Details* panel, click the *Add Transformation* under the *Targets* section to add a transformation.
+
+. Change the transformation type from *Append* to *Prepend*.
+
+. Enter the following in the *string* field under the menu:
 +
 ----
-/greeting
+Hello from, 
 ----
 
-. Click *Add* to confirm your entry.
+{blank}
 
-. Click your new */greeting* endpoint under the *Paths* heading.
+NOTE: Make sure a space character is added after the comma character.
 
-. Select the *POST* tab in the *Operations* section, and click *Add Operation*.
+. Click *Done* to return to the *Add to Integration* screen. This screen should now list your *Provided API Return Path* with a *Data Type Mismatch* warning.
 
-. Enter the following in the *Summary* field:
+. Click the *Warning Icon* on the *Provided API Return Path* panel and choose *Add a data mapping step*.
+
+. From the *Data Mapper* screen click the *Message* heading in the *Source* panel to expand it.
+
+. Click the *message* field under the *Message* heading in the *Source* panel.
+. Select the *body* field in the *Target* panel. This maps the *message* value from the created Slack message to the *body* of the outgoing HTTP response.
+
+. Click *Done* to return to the *Add to Integration* Editor.
+
+. Click *Publish*, then enter the name:
 +
-----
-Greet with name
-----
-
-. Enter the following in the *Operation ID* field:
-+
-----
-greetname
-----
-
-. In the *Request Body* section, click *Add a request body*.
-
-. Choose *Name* as the type.
-
-. In the *Responses* section click *Add a response*.
-.. In the window that appears choose *200 OK* as the option.
-.. Click *Add*.
-.. Click *No description* beside the *200 OK* response and enter the following in the *Description* field:
-+
-----
-Greeting response
-----
-.. Choose *String* as the type.
-Fuse Online automatically completes the type *String as String*.
-
-
-. Click *Save* in the top right corner of the page to save your work.
-The *Review Actions* screen of the *New Integration* wizard is displayed.
-
-. Click *Next*.
-
-. Click *Save* on the *New Integration* wizard screen.
-
-. On the *Save the integration* screen:
-.. Enter the following in the *Name* field:
-+
-[subs="attributes+"]
 ----
 Greeting Integration {user-username}
 ----
-.. Enter the following in the *Description* field:
-+
-----
-my greeting api
-----
 
-. Click *Save* to save your API design.
+. Click *Save and Publish* to trigger an link:https://docs.openshift.com/container-platform/3.11/creating_images/s2i.html[Source to Image (S2I), window="_blank", id="{context}-2"] build.
 
+. Wait until Fuse Online reports your build and deployment was successful. Move onto the *Protecting APIs* Solution Pattern to securely expose and test this API using Red Hat 3scale API Management.
 
 [type=verification]
-Is a *Greet with name* entry listed in the *Operations* screen?
+Does the Fuse Online *Home* screen list your *Post Slack Greeting API* with a blue box that contains the text *Running*?
 
 [type=verificationFail]
-{standard-fail-text}
+Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.

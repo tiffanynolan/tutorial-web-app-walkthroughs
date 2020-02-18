@@ -1,52 +1,37 @@
 // update the component versions for each release
 :fuse-version: 7.4
-:3scale-version: 2.6
+:3scale-version: 2.7
 
 // URLs
 :openshift-console-url: {openshift-host}/console
-:fuse-url: https://eval.apps.city.openshiftworkshop.com/
-:3scale-url: https://eval.apps.city.openshiftworkshop.com/
-:route: https://wt3-{user-username}-3scale.{openshift-app-host}
+:route: https://wt4-{user-username}-3scale.{openshift-app-host}
 
 //attributes
 :title: 4 - Protecting APIs
 :3scale-name: Red Hat 3scale API Management Platform
+:sample-api-key: testkey
 :standard-fail-text: Verify that you followed all the steps. If you continue to have issues, contact your administrator.
 
 //id syntax is used here for the custom IDs because that is how the Solution Explorer sorts these within groups
 [id='4-protecting-apis']
 = {title}
 
-// word count that fits best is 15-22, with 20 really being the sweet spot. Character count for that space would be 100-125
-Learn how to implement a container-native OpenAPI RESTful API without coding.
-
-Container-native applications::
-Applications that are designed to run in a containerised environment.
-
-// This is taken right from https://github.com/OAI/OpenAPI-Specification
-OpenAPI Specification::
-A standard, programming language-agnostic interface description for REST APIs. REST APIs allow both humans and computers to discover and understand the capabilities of a service without requiring access to source code, additional documentation, or inspection of network traffic. When properly defined via OpenAPI, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
-
-In this Solution Pattern you follow a design-first approach, based on the OpenAPI specification, to define a RESTful API that accepts a name parameter and echoes it back in the response body.
-You then use the resulting Open API definition to generate the code for your API and deploy it in a containerised environment.
-
-Following a design first approach to API development is self-documenting, and provides a clear API definition for partners and end-users of your API.
-It also allows you to identify important design decisions prior to coding and deployment.
+This Solution Pattern demonstrates how to import an API into 3scale API Management and secure it using API Key security.
 
 [type=walkthroughResource,serviceName=openshift]
 .Red Hat OpenShift
 ****
-* link:{openshift-console-url}[Console, window="_blank"]
+* link:{openshift-console-url}/console[Console, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=fuse]
-.Red Hat Fuse Online
+.Fuse Online
 ****
 * link:{fuse-url}[Console, window="_blank"]
 ****
 
 [type=walkthroughResource,serviceName=3scale]
-.Red Hat 3scale API Management Platform
+.3Scale
 ****
 * link:{api-management-url}[Console, window="_blank"]
 * link:https://developers.redhat.com/products/3scale/overview/[3Scale Overview, window="_blank"]
@@ -55,70 +40,9 @@ It also allows you to identify important design decisions prior to coding and de
 
 :sectnums:
 
-[time=20]
-== Implementing and publishing the API
-:context: implementing-api
-. Log in to the link:{fuse-url}[Red Hat Fuse Online, window="_blank", id="{context}-1"] console.
-
-. Select *Integrations* from the left hand menu.
-
-. Choose *Edit* from the menu for the *Greeting Integration* entry. The *Operations* page appears.
-
-. Click the *Create flow* button. The *Add to Integration* page appears displaying the *Provided API* and the *Provided API Return Path*.
-
-. Click the blue plus icon to add a step.
-
-. Select your *Greeting Slack Target* on the *Choose a connection* screen. This will add a step between the *Provided API* and the *Provided API Return Path*.
-
-. When prompted to *Choose an action* select *Channel*. You can use this to send a message to a specific channel in your Slack workspace.
-
-. Use the *Channel* menu to select the *low-code-demo* channel and click *Next*.
-The *Add to Integration* screen should now display your Slack connection with a *Data Type Mismatch* warning icon.
-
-. Click the *Warning Icon* on the Slack *Channel* panel and choose *Add a data mapping step*.
-
-. From the *Data Mapper* screen click the *body* field in the *Source* panel to expand it.
-
-. Click the *name* field under the *body*, then click the *message* field in the *Target* panel. This maps the value of the incoming HTTP request *body* to the outgoing Slack *message* property.
-
-. In the right hand *Mapping Details* panel, click the *Add Transformation* under the *Targets* section to add a transformation.
-
-. Change the transformation type from *Append* to *Prepend*.
-
-. Enter the following in the *string* field under the menu:
-+
-----
-Hello from
-----
-
-. Click *Done* to return to the *Add to Integration* screen. This screen should now list your *Provided API Return Path* with a *Data Type Mismatch* warning.
-
-. Click the *Warning Icon* on the *Provided API Return Path* panel and choose *Add a data mapping step*.
-
-. From the *Data Mapper* screen click the *Message* heading in the *Source* panel to expand it.
-
-. Click the *message* field under the *Message* heading in the *Source* panel.
-. Select the *body* field in the *Target* panel. This maps the *message* value from the created Slack message to the *body* of the outgoing HTTP response.
-
-. Click *Done* to return to the *Add to Integration* Editor.
-
-. Click *Publish*.
-
-. Click *Save and Publish* to trigger an link:https://docs.openshift.com/container-platform/3.11/creating_images/s2i.html[Source to Image (S2I), window="_blank", id="{context}-2"] build.
-
-. Wait until Fuse Online reports your build and deployment was successful.
-
-[type=verification]
-Does the Fuse Online *Home* screen list your *Greeting Integration* with a blue box that contains the text *Running*?
-
-[type=verificationFail]
-{standard-fail-text}
-
-
-
 [time=10]
-== Exposing and invoking the API
-:context: exposing-api
+== Importing an API to 3scale using Service Discovery
+:context: import-api
 === API Management Login
 
 . Open the link:{api-management-url}[{3scale-name} Login screen, window="_blank", id="{context}-1"].
@@ -134,7 +58,7 @@ Can you see the {3scale-name} Dashboard that shows the Audience and APIs panels?
 {standard-fail-text}
 
 
-=== Adding the App Endpoint to Red Hat 3scale
+=== Import the API to Red Hat 3scale
 
 . From the *APIs* section of the *Dashboard*, select the *New Product* item.
 . Select the *Import from OpenShift* option. If this option is not enabled, click the *Authenticate to enable this option* link and choose *Allow selected permissions*.
@@ -145,13 +69,22 @@ Can you see the {3scale-name} Dashboard that shows the Audience and APIs panels?
 +
 The import process can take a few minutes to complete.
 
-. Configuring the API:
+[type=verification]
+Can you see the *i-greeting-integration-{user-username}* listed in the *APIs* section of the 3scale Dashboard ?
 
-.. Choose *Product: i-greeting-integration-{user-username}* from the top navigation menu to view the {3scale-name} homepage.
+[type=verificationFail]
+Wait a little longer, or try the import again. {standard-fail-text} 
+
+[time=10]
+== Configuring the API
+
+=== Set the Staging Environment API URL
+. Navigate to the link:{api-management-url}[{3scale-name} 3scale Dashboard, window="_blank"], logging if necessary.
+. Choose *i-greeting-integration-{user-username}* from the top navigation menu to view the {3scale-name} homepage.
 +
 NOTE: If the *i-greeting-integration-{user-username}* is not listed in the top navigation menu that means it is still being imported. Wait a while, refresh the page, and try again.
 
-.. Select the *Settings* item in the *Integration* dropdown menu.
+. Select the *Settings* item in the *Integration* dropdown menu on the left.
 
 .. In the *Staging Public Base URL*, enter:
 +
@@ -160,78 +93,83 @@ NOTE: If the *i-greeting-integration-{user-username}* is not listed in the top n
 {route}
 ----
 +
-NOTE: We change the URL because the default one generated is too long and will fail to resolve.
+NOTE: We change the URL because the default one generated is usually too long and will fail to resolve.
 
-.. Scroll down and click *Update Product*
+.. Scroll down and click *Update Product* at the bottom of the page.
 
-. Create a mapping rule for the `/greeting` endpoint.
+=== Create a Mapping Rule for the Greeting Endpoint
 
-.. Choose *Integration > Mapping Rules* from the left menu.
+. Choose *Integration > Mapping Rules* from the left menu.
 
-.. Click *Add Mapping Rule*.
+. Click *Add Mapping Rule*.
 
-.. Select the *POST* option for *Verb*.
+. Select the *POST* option for *Verb*.
 
-.. Enter the `/greeting` for the *Pattern*.
+. Enter the `/greeting` for the *Pattern*.
 
-.. Click *Create Mapping Rule*
+. Click the *Create Mapping Rule* button.
 
-.. Choose the *Configuration* item in the *Integration* dropdown menu.
+. Choose the *Configuration* item in the *Integration* dropdown menu. 
 +
-Note: There is a warning icon next to this link that suggests promoting the configuration.
+Note: There is a warning icon next to this link that suggests promoting the configuration to the Staging Environment.
 
-
-.. On the *Configuration* screen click *Promote v.2 to Staging*.
+. On the *Configuration* screen click *Promote v.2 to Staging*.
 
 [type=verification]
-Is the staging environment listed in the *Environments* section on the *Integration > Configuration* screen?
+Is the staging environment listed in the *Environments* section on the *Integration > Configuration* screen with the route {route} listed?
 
 [type=verificationFail]
-{standard-fail-text}
+Verify that you followed each step in the procedure above. If you are still having issues, contact your administrator.
 
-=== Creating and Application and Application Plan
+[time=10]
+== Creating an Application and Application Plan
 
-. Create a new *Application Plan*:
-.. Select *Applications > Application Plans* from the side navigation.
-.. Select *Create Application Plan*.
-.. Enter the following for *Name* and *System name*:
+Note that the *Example curl for testing* listed for the *Staging Environment* contains a placeholder API Key (*user_key* querystring parameter). To address this, and obtain a valid API Key that enables a client to consume the API, the API must be added as an *Application* within a developer account. This *Application* must be part of an *Application Plan*. The *Application Plan* is used to define pricing, limits, methods, and metrics.
+
+=== Create an Application Plan
+
+. Select *Applications > Application Plans* from the side navigation.
+. Select *Create Application Plan*.
+. Enter the following for *Name* and *System name*:
 +
 [subs="attributes+"]
 ----
 low-code
 ----
-.. Leave the other fields with their default values.
-.. Select *Create Application Plan*. You will be redirected to the *Application Plans* screen.
-.. Click *Publish*, beside your plan list item, to publish the Plan.
+. Leave the other fields with their default values.
+. Select *Create Application Plan*. You will be redirected to the *Application Plans* screen.
+. Click *Publish*, beside your plan list item, to publish the Plan.
 
-. Create a new *Application* for the *Developer* Group, assigned to the Plan:
-.. Select *Audience* from the top navigation menu.
-.. Select the *Developer* Account to open the *Account Summary* page.
-.. Select the *(num) Application* item from the breadcrumb to view Applications.
-.. Select the *Create Application* button in the top right.
-.. Select the *low-code* Plan in the *Application plan* menu under the *i-greeting-integration-{user-username}*.
-.. Enter the following for *Name* and *Description*:
+=== Create an Application
+In this step a new *Application* will be created for the *Developer* Group,  assigned to the *Application Plan* created in the previous section.
+
+. Select *Audience* from the top navigation menu.
+. Select the *Developer* Account to open the *Account Summary* page.
+. Select the *(num) Application* item from the breadcrumb (below the top navigation menu) to view the developer's Applications.
+. Select the *Create Application* button in the top right.
+. Select the *low-code* Plan in the *Application plan* dropdown under the *i-greeting-integration-{user-username}* heading.
+. Enter the following for *Name* and *Description*:
 +
 [subs="attributes+"]
 ----
 low-code-app-{user-username}
 ----
-.. Select *Create Application*.
+. Select *Create Application*.
 
 . Set a custom *User Key* for the application:
-.. On the *low-code-app-{user-username}* Application screen you were redirected to, scroll to the *API Credentials* section.
-.. Click the green pencil icon beside the *API User Key*
-.. In the *Set Custom User Key* modal dialog, enter:
+. On the *low-code-app-{user-username}* Application screen you were redirected to, scroll to the *API Credentials* section.
+. Click the green pencil icon beside the *API User Key*
+. In the *Set Custom User Key* modal dialog, enter:
 +
 [subs="attributes+"]
 ----
-test
+{sample-api-key}
 ----
-.. Select *Set Custom Key*.
+. Select *Set Custom Key*.
 
 
 [type=verification]
-Review the settings in 3scale. Do they match the settings outlined in this task?
+Return to the *Integration > Configuration* screen. Does the *Example curl for testing* under the *Staging Environment* show `user_key={sample-api-key}`?
 
 [type=verificationFail]
 {standard-fail-text}
@@ -243,11 +181,11 @@ Review the settings in 3scale. Do they match the settings outlined in this task?
 +
 [subs="attributes+"]
 ----
-curl -d '{"name":"John"}' -H "Content-Type: application/json" -X POST "{route}/greeting?user_key=test"
+curl -d '{"name":"John"}' -H "Content-Type: application/json" -X POST "{route}/greeting?user_key={sample-api-key}"
 ----
 
 [type=verification]
 Did the message "Hello from John" appear in your Slack channel?
 
 [type=verificationFail]
-{standard-fail-text}
+Verify that you followed each step in the procedure above.  If you are still having issues, contact your administrator.
